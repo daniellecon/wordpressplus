@@ -74,7 +74,7 @@
 	display: none;
 }
 
-/* OnePress Plus General CSS
+/* sovenco Plus General CSS
 ------------------------------*/
 /* Video Background */
 .video-section {
@@ -117,7 +117,7 @@
 	background-size: cover;
 }
 
-/* OnePress Plus Section: Map
+/* sovenco Plus Section: Map
 ------------------------------*/
 section.section-map:before {
 	display: none !important;
@@ -136,7 +136,7 @@ section.section-map:before {
 	margin: 10px 0px 0px;
 }
 
-.onepress-map {
+.sovenco-map {
 	display: block;
 }
 
@@ -155,7 +155,7 @@ section.section-map:before {
 	margin-bottom: 15px;
 }
 
-/* OnePress Plus Section: Projects
+/* sovenco Plus Section: Projects
 --------------------------------*/
 .spinner {
 	animation: 0.8s linear 0s normal none infinite running spin;
@@ -507,7 +507,7 @@ section.section-map:before {
 	background: #fff;
 }
 
-/* OnePress Plus Section: Pricing
+/* sovenco Plus Section: Pricing
 --------------------------------*/
 .section-pricing.section-inverse .pricing__title {
 	color: #333333;
@@ -577,7 +577,7 @@ section.section-map:before {
 	padding: 0.25em 0 2.5em;
 }
 
-/* OnePress Plus Section: Call To Action
+/* sovenco Plus Section: Call To Action
 --------------------------------*/
 @media (max-width: 991px) {
 	.section-cta {
@@ -669,7 +669,7 @@ section.section-map:before {
 	margin-bottom: 0px;
 }
 
-/* OnePress Plus Section: Clients
+/* sovenco Plus Section: Clients
 --------------------------------*/
 .clients-wrapper {
 	text-align: center;
