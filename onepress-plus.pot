@@ -138,7 +138,7 @@ msgid "Categories"
 msgstr ""
 
 #: inc/template-tags.php:47
-msgid "OnePress Plus Documentation"
+msgid "sovenco Plus Documentation"
 msgstr ""
 
 #: inc/template-tags.php:57
@@ -354,7 +354,7 @@ msgid ""
 msgstr ""
 
 #: inc/auto-update/auto-update.php:24
-msgid "OnePress Plus License"
+msgid "sovenco Plus License"
 msgstr ""
 
 #: inc/auto-update/auto-update.php:63
@@ -547,19 +547,19 @@ msgid "Capitalize"
 msgstr ""
 
 #. Name of the plugin
-msgid "OnePress Plus"
+msgid "sovenco Plus"
 msgstr ""
 
 #. Description of the plugin
 msgid ""
-"The OnePress Plus plugin adds powerful premium features to OnePress theme."
+"The sovenco Plus plugin adds powerful premium features to sovenco theme."
 msgstr ""
 
 #. URI of the plugin
 #. Author URI of the plugin
-msgid "http://www.famethemes.com/"
+msgid "http://www.sovenco.com/"
 msgstr ""
 
 #. Author of the plugin
-msgid "famethemes"
+msgid "sovenco"
 msgstr ""
