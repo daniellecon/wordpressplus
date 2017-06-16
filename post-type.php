@@ -7,26 +7,26 @@ add_action( 'init', 'codex_portfolio_init' );
  */
 function codex_portfolio_init() {
 
-    $slug  = get_theme_mod( 'onepress_project_slug', 'portfolio' );
+    $slug  = get_theme_mod( 'sovenco_project_slug', 'portfolio' );
     if ( ! $slug ) {
         $slug = 'portfolio';
     }
 
     $labels = array(
-        'name'               => _x( 'Portfolios', 'post type general name', 'onepress-plus' ),
-        'singular_name'      => _x( 'Portfolio', 'post type singular name', 'onepress-plus' ),
-        'menu_name'          => _x( 'Portfolios', 'admin menu', 'onepress-plus' ),
-        'name_admin_bar'     => _x( 'Portfolio', 'add new on admin bar', 'onepress-plus' ),
-        'add_new'            => _x( 'Add New', 'portfolio', 'onepress-plus' ),
-        'add_new_item'       => __( 'Add New Portfolio', 'onepress-plus' ),
-        'new_item'           => __( 'New Portfolio', 'onepress-plus' ),
-        'edit_item'          => __( 'Edit Portfolio', 'onepress-plus' ),
-        'view_item'          => __( 'View Portfolio', 'onepress-plus' ),
-        'all_items'          => __( 'All Portfolios', 'onepress-plus' ),
-        'search_items'       => __( 'Search Portfolios', 'onepress-plus' ),
-        'parent_item_colon'  => __( 'Parent Portfolios:', 'onepress-plus' ),
-        'not_found'          => __( 'No portfolios found.', 'onepress-plus' ),
-        'not_found_in_trash' => __( 'No portfolios found in Trash.', 'onepress-plus' )
+        'name'               => _x( 'Portfolios', 'post type general name', 'sovenco-plus' ),
+        'singular_name'      => _x( 'Portfolio', 'post type singular name', 'sovenco-plus' ),
+        'menu_name'          => _x( 'Portfolios', 'admin menu', 'sovenco-plus' ),
+        'name_admin_bar'     => _x( 'Portfolio', 'add new on admin bar', 'sovenco-plus' ),
+        'add_new'            => _x( 'Add New', 'portfolio', 'sovenco-plus' ),
+        'add_new_item'       => __( 'Add New Portfolio', 'sovenco-plus' ),
+        'new_item'           => __( 'New Portfolio', 'sovenco-plus' ),
+        'edit_item'          => __( 'Edit Portfolio', 'sovenco-plus' ),
+        'view_item'          => __( 'View Portfolio', 'sovenco-plus' ),
+        'all_items'          => __( 'All Portfolios', 'sovenco-plus' ),
+        'search_items'       => __( 'Search Portfolios', 'sovenco-plus' ),
+        'parent_item_colon'  => __( 'Parent Portfolios:', 'sovenco-plus' ),
+        'not_found'          => __( 'No portfolios found.', 'sovenco-plus' ),
+        'not_found_in_trash' => __( 'No portfolios found in Trash.', 'sovenco-plus' )
     );
 
     $args = array(
@@ -48,22 +48,22 @@ function codex_portfolio_init() {
 
     // Portfolio category
     $labels = array(
-        'name'                       => _x( 'Categories', 'taxonomy general name', 'onepress-plus' ),
-        'singular_name'              => _x( 'Category', 'taxonomy singular name', 'onepress-plus' ),
-        'search_items'               => __( 'Search Categories', 'onepress-plus' ),
-        'popular_items'              => __( 'Popular Categories', 'onepress-plus' ),
-        'all_items'                  => __( 'All Categories', 'onepress-plus' ),
+        'name'                       => _x( 'Categories', 'taxonomy general name', 'sovenco-plus' ),
+        'singular_name'              => _x( 'Category', 'taxonomy singular name', 'sovenco-plus' ),
+        'search_items'               => __( 'Search Categories', 'sovenco-plus' ),
+        'popular_items'              => __( 'Popular Categories', 'sovenco-plus' ),
+        'all_items'                  => __( 'All Categories', 'sovenco-plus' ),
         'parent_item'                => null,
         'parent_item_colon'          => null,
-        'edit_item'                  => __( 'Edit Category', 'onepress-plus' ),
-        'update_item'                => __( 'Update Category', 'onepress-plus' ),
-        'add_new_item'               => __( 'Add New Category', 'onepress-plus' ),
-        'new_item_name'              => __( 'New Category Name', 'onepress-plus' ),
-        'separate_items_with_commas' => __( 'Separate categories with commas', 'onepress-plus' ),
-        'add_or_remove_items'        => __( 'Add or remove categories', 'onepress-plus' ),
-        'choose_from_most_used'      => __( 'Choose from the most used categories', 'onepress-plus' ),
-        'not_found'                  => __( 'No categories found.', 'onepress-plus' ),
-        'menu_name'                  => __( 'Categories', 'onepress-plus' ),
+        'edit_item'                  => __( 'Edit Category', 'sovenco-plus' ),
+        'update_item'                => __( 'Update Category', 'sovenco-plus' ),
+        'add_new_item'               => __( 'Add New Category', 'sovenco-plus' ),
+        'new_item_name'              => __( 'New Category Name', 'sovenco-plus' ),
+        'separate_items_with_commas' => __( 'Separate categories with commas', 'sovenco-plus' ),
+        'add_or_remove_items'        => __( 'Add or remove categories', 'sovenco-plus' ),
+        'choose_from_most_used'      => __( 'Choose from the most used categories', 'sovenco-plus' ),
+        'not_found'                  => __( 'No categories found.', 'sovenco-plus' ),
+        'menu_name'                  => __( 'Categories', 'sovenco-plus' ),
     );
 
     $args = array(
