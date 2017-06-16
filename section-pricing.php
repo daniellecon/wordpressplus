@@ -1,27 +1,27 @@
 <?php
-$onepress_pricing_id       = get_theme_mod( 'onepress_pricing_id', esc_html__('pricing', 'onepress-plus') );
-$onepress_pricing_title    = get_theme_mod( 'onepress_pricing_title', esc_html__('Pricing Table', 'onepress-plus' ));
-$onepress_pricing_subtitle = get_theme_mod( 'onepress_pricing_subtitle', esc_html__('Responsive pricing section', 'onepress-plus' ));
-$desc                      = get_theme_mod( 'onepress_pricing_desc' )
+$sovenco_pricing_id       = get_theme_mod( 'sovenco_pricing_id', esc_html__('pricing', 'sovenco-plus') );
+$sovenco_pricing_title    = get_theme_mod( 'sovenco_pricing_title', esc_html__('Pricing Table', 'sovenco-plus' ));
+$sovenco_pricing_subtitle = get_theme_mod( 'sovenco_pricing_subtitle', esc_html__('Responsive pricing section', 'sovenco-plus' ));
+$desc                      = get_theme_mod( 'sovenco_pricing_desc' )
 ?>
-<?php if ( ! onepress_is_selective_refresh() ){ ?>
-<section <?php if ( $onepress_pricing_id ) { ?>id="<?php echo esc_attr( $onepress_pricing_id ); ?>" <?php } ?> class="<?php echo esc_attr( apply_filters( 'onepress_section_class', 'section-pricing section-padding onepage-section', 'pricing' ) ); ?>">
+<?php if ( ! sovenco_is_selective_refresh() ){ ?>
+<section <?php if ( $sovenco_pricing_id ) { ?>id="<?php echo esc_attr( $sovenco_pricing_id ); ?>" <?php } ?> class="<?php echo esc_attr( apply_filters( 'sovenco_section_class', 'section-pricing section-padding onepage-section', 'pricing' ) ); ?>">
 <?php } ?>
-    <?php do_action( 'onepress_section_before_inner', 'pricing' ); ?>
+    <?php do_action( 'sovenco_section_before_inner', 'pricing' ); ?>
     <div class="container">
-        <?php if ( $onepress_pricing_title || $onepress_pricing_subtitle || $desc ){ ?>
+        <?php if ( $sovenco_pricing_title || $sovenco_pricing_subtitle || $desc ){ ?>
         <div class="section-title-area">
-            <?php if ( $onepress_pricing_subtitle != '' ) {  echo '<h5 class="section-subtitle">' . esc_html( $onepress_pricing_subtitle ) . '</h5>'; } ?>
-            <?php if ( $onepress_pricing_title != '' ) { echo '<h2 class="section-title">' . esc_html( $onepress_pricing_title ) . '</h2>';  } ?>
+            <?php if ( $sovenco_pricing_subtitle != '' ) {  echo '<h5 class="section-subtitle">' . esc_html( $sovenco_pricing_subtitle ) . '</h5>'; } ?>
+            <?php if ( $sovenco_pricing_title != '' ) { echo '<h2 class="section-title">' . esc_html( $sovenco_pricing_title ) . '</h2>';  } ?>
             <?php if ( $desc ) {
-                echo '<div class="section-desc">' . apply_filters( 'onepress_the_content', wp_kses_post( $desc ) ) . '</div>';
+                echo '<div class="section-desc">' . apply_filters( 'sovenco_the_content', wp_kses_post( $desc ) ) . '</div>';
             } ?>
         </div>
         <?php } ?>
         <div class="pricing-table ">
             <?php
 
-            $plans = get_theme_mod( 'onepress_pricing_plans' );
+            $plans = get_theme_mod( 'sovenco_pricing_plans' );
 
             if ( is_string( $plans ) ) {
                 $plans = json_decode( $plans , true );
@@ -30,32 +30,32 @@ $desc                      = get_theme_mod( 'onepress_pricing_desc' )
             if ( empty( $plans ) || ! is_array( $plans ) ) {
                 $plans = array(
                     array(
-                        'title' => esc_html__( 'Freelancer', 'onepress-plus' ),
-                        'code'  => esc_html__( '$', 'onepress-plus' ),
+                        'title' => esc_html__( 'Freelancer', 'sovenco-plus' ),
+                        'code'  => esc_html__( '$', 'sovenco-plus' ),
                         'price'  => '9.90',
-                        'subtitle' => esc_html__( 'Perfect for single freelancers who work by themselves', 'onepress-plus' ),
-                        'content' => esc_html__( "Support Forum \nFree hosting\n 1 hour of support\n 40MB of storage space", 'onepress-plus' ),
-                        'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                        'subtitle' => esc_html__( 'Perfect for single freelancers who work by themselves', 'sovenco-plus' ),
+                        'content' => esc_html__( "Support Forum \nFree hosting\n 1 hour of support\n 40MB of storage space", 'sovenco-plus' ),
+                        'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                         'link' => '#',
                         'button' => 'btn-theme-primary',
                     ),
                     array(
-                        'title' => esc_html__( 'Small Business', 'onepress-plus' ),
-                        'code'  => esc_html__( '$', 'onepress-plus' ),
+                        'title' => esc_html__( 'Small Business', 'sovenco-plus' ),
+                        'code'  => esc_html__( '$', 'sovenco-plus' ),
                         'price'  => '29.9',
-                        'subtitle' => esc_html__( 'Suitable for small businesses with up to 5 employees', 'onepress-plus' ),
-                        'content' => esc_html__( "Support Forum \nFree hosting\n 10 hour of support\n 1GB of storage space", 'onepress-plus' ),
-                        'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                        'subtitle' => esc_html__( 'Suitable for small businesses with up to 5 employees', 'sovenco-plus' ),
+                        'content' => esc_html__( "Support Forum \nFree hosting\n 10 hour of support\n 1GB of storage space", 'sovenco-plus' ),
+                        'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                         'link' => '#',
                         'button' => 'btn-success',
                     ),
                     array(
-                        'title' => esc_html__( 'Larger Business', 'onepress-plus' ),
-                        'code'  => esc_html__( '$', 'onepress-plus' ),
+                        'title' => esc_html__( 'Larger Business', 'sovenco-plus' ),
+                        'code'  => esc_html__( '$', 'sovenco-plus' ),
                         'price'  => '59.90',
-                        'subtitle' => esc_html__( 'Great for large businesses with more than 5 employees', 'onepress-plus' ),
-                        'content' => esc_html__( "Support Forum \nFree hosting\n Unlimited hours of support\n Unlimited storage space", 'onepress-plus' ),
-                        'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                        'subtitle' => esc_html__( 'Great for large businesses with more than 5 employees', 'sovenco-plus' ),
+                        'content' => esc_html__( "Support Forum \nFree hosting\n Unlimited hours of support\n Unlimited storage space", 'sovenco-plus' ),
+                        'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                         'link' => '#',
                         'button' => 'btn-theme-primary',
                     ),
@@ -87,7 +87,7 @@ $desc                      = get_theme_mod( 'onepress_pricing_desc' )
                         'price'  => '',
                         'subtitle' => '',
                         'content' => '',
-                        'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                        'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                         'link' => '#',
                         'button' => 'btn-theme-primary'
                     ) );
@@ -122,7 +122,7 @@ $desc                      = get_theme_mod( 'onepress_pricing_desc' )
         </div>
 
     </div>
-    <?php do_action( 'onepress_section_after_inner', 'pricing' ); ?>
-<?php if ( ! onepress_is_selective_refresh() ){ ?>
+    <?php do_action( 'sovenco_section_after_inner', 'pricing' ); ?>
+<?php if ( ! sovenco_is_selective_refresh() ){ ?>
 </section>
 <?php } ?>
