@@ -127,7 +127,7 @@ jQuery( document ).ready( function( $ ){
                         $s.find( '.slider-spinner').remove();
                     }
                 });
-                $v.html( OnePress_Plus.browser_warning );
+                $v.html( sovenco_Plus.browser_warning );
                 if ( video_mp4 ) {
                     $v.append( $( ' <source type="video/mp4"/>' ).attr( 'src', video_mp4 ) );
                 }
@@ -158,7 +158,7 @@ jQuery( document ).ready( function( $ ){
      *
      */
 
-    $( '.onepress-map').each( function() {
+    $( '.sovenco-map').each( function() {
         var mapArea = $( this )[0];
 
         var data =  $( this ).data( 'map' );
@@ -417,8 +417,8 @@ jQuery( document ).ready( function( $ ){
                     } else {
                         if (  post_id ) {
                             $.ajax( {
-                                url: OnePress_Plus.ajax_url,
-                                data: { action: 'onepress_plus_ajax', onepress_ajax_action: 'load_portfolio_details', post_id: post_id },
+                                url: sovenco_Plus.ajax_url,
+                                data: { action: 'sovenco_plus_ajax', sovenco_ajax_action: 'load_portfolio_details', post_id: post_id },
                                 dataType: 'json',
                                 type: 'post',
                                 success:  function( data ){
