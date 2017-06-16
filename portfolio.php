@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package OnePress
+ * @package sovenco
  */
 
 get_header(); ?>
@@ -22,7 +22,7 @@ get_header(); ?>
         </div>
     </div>
 
-    <?php echo onepress_breadcrumb(); ?>
+    <?php echo sovenco_breadcrumb(); ?>
 
     <div id="content-inside" class="container">
         <div id="primary" class="content-area">
