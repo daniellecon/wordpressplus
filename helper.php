@@ -3,7 +3,7 @@
 # Register our customizer panels, sections, settings, and controls.
 $GLOBALS['wp_typography_auto_apply'] = array();
 
-add_action( 'wp_head', 'onepress_typography_print_styles', 99 );
+add_action( 'wp_head', 'sovenco_typography_print_styles', 99 );
 
 
 /**
@@ -13,7 +13,7 @@ add_action( 'wp_head', 'onepress_typography_print_styles', 99 );
  * @access public
  * @return void
  */
-function onepress_typography_print_styles() {
+function sovenco_typography_print_styles() {
 
     global $wp_typography_auto_apply;
 
@@ -22,11 +22,11 @@ function onepress_typography_print_styles() {
     $css = array();
     $scheme = is_ssl() ? 'https' : 'http';
 
-    if ( ! function_exists( 'onepress_typography_get_fonts' ) ) {
+    if ( ! function_exists( 'sovenco_typography_get_fonts' ) ) {
         include_once dirname( __FILE__ ).'/typography.php';
     }
 
-    $fonts = onepress_typography_get_google_fonts();
+    $fonts = sovenco_typography_get_google_fonts();
 
     if ( ! empty( $wp_typography_auto_apply ) ) {
         foreach( $wp_typography_auto_apply as $k => $settings ) {
@@ -89,7 +89,7 @@ function onepress_typography_print_styles() {
                     $font_variants[ $font_id ][ $style ] = $style ;
                 }
             }
-            $css[] = onepress_typography_css( $data, $settings['css_selector'] );
+            $css[] = sovenco_typography_css( $data, $settings['css_selector'] );
         }
     }
 
@@ -128,7 +128,7 @@ function onepress_typography_print_styles() {
  * @param array $selector
  * @return bool|string
  */
-function onepress_typography_css( $css, $selector = array() ){
+function sovenco_typography_css( $css, $selector = array() ){
     if ( ! is_array( $css ) || ! $selector ){
         return false;
     }
@@ -190,7 +190,7 @@ function onepress_typography_css( $css, $selector = array() ){
  *  'text-decoration' => '',
  *)
  */
-function onepress_typography_helper_auto_apply( $setting_key, $css_selector = '',  $default = null ,  $data_type = 'theme_mod' ){
+function sovenco_typography_helper_auto_apply( $setting_key, $css_selector = '',  $default = null ,  $data_type = 'theme_mod' ){
     global $wp_typography_auto_apply;
     $wp_typography_auto_apply[ $setting_key ] = array(
         'key' => $setting_key,
