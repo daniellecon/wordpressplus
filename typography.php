@@ -6,7 +6,7 @@
  * @param $value
  * @return bool|mixed|string|void
  */
-function onepress_sanitize_typography_field( $value ){
+function sovenco_sanitize_typography_field( $value ){
 
     if( is_string( $value ) ) {
         $value = json_decode( $value, true );
@@ -26,7 +26,7 @@ function onepress_sanitize_typography_field( $value ){
 
 
 
-function onepress_typography_get_default_fonts() {
+function sovenco_typography_get_default_fonts() {
 
     // Declare default font list
     $font_list = array(
@@ -66,12 +66,12 @@ function onepress_typography_get_default_fonts() {
 
     // Filter to allow us to modify the fonts array before saving the transient
 
-    return apply_filters( 'onepress_typography_get_default_fonts', $fonts );
+    return apply_filters( 'sovenco_typography_get_default_fonts', $fonts );
 
 }
 
 
-function onepress_typography_get_google_fonts(){
+function sovenco_typography_get_google_fonts(){
     /**
      * Pull in raw file from the WordPress subversion
      * repository as a last resort.
@@ -107,13 +107,13 @@ function onepress_typography_get_google_fonts(){
         }
     }
 
-    return apply_filters( 'onepress_typography_get_google_fonts', $fonts );
+    return apply_filters( 'sovenco_typography_get_google_fonts', $fonts );
 }
 
-function onepress_typography_get_fonts(){
+function sovenco_typography_get_fonts(){
     //delete_transient( 'wp_typography_fonts' ); // for debug
     if ( false === ( $fonts = get_transient( 'wp_typography_fonts' ) ) ) {
-        $fonts = array_merge( onepress_typography_get_default_fonts(), onepress_typography_get_google_fonts() );
+        $fonts = array_merge( sovenco_typography_get_default_fonts(), sovenco_typography_get_google_fonts() );
         set_transient( 'wp_typography_fonts', $fonts, 24 * HOUR_IN_SECONDS );
     }
     return $fonts;
@@ -129,7 +129,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
      * @since  1.0.0
      * @access public
      */
-    class OnePress_Customize_Typography_Control extends WP_Customize_Control {
+    class sovenco_Customize_Typography_Control extends WP_Customize_Control {
 
         /**
          * The type of customize control being rendered.
@@ -181,15 +181,15 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             $this->l10n = wp_parse_args(
                 $this->l10n,
                 array(
-                    'family'            => esc_html__( 'Font Family', 'onepress-plus' ),
-                    'option_default'    => esc_html__( 'Default', 'onepress-plus' ),
-                    'size'              => esc_html__( 'Font Size (px)',   'onepress-plus' ),
-                    'style'             => esc_html__( 'Font Weight/Style',  'onepress-plus' ),
-                    'line_height'       => esc_html__( 'Line Height (px)', 'onepress-plus' ),
-                    'text_decoration'   => esc_html__( 'Text Decoration', 'onepress-plus' ),
-                    'letter_spacing'    => esc_html__( 'Letter Spacing (px)', 'onepress-plus' ),
-                    'text_transform'    => esc_html__( 'Text Transform', 'onepress-plus' ),
-                    'color'             => esc_html__( 'Color', 'onepress-plus' ),
+                    'family'            => esc_html__( 'Font Family', 'sovenco-plus' ),
+                    'option_default'    => esc_html__( 'Default', 'sovenco-plus' ),
+                    'size'              => esc_html__( 'Font Size (px)',   'sovenco-plus' ),
+                    'style'             => esc_html__( 'Font Weight/Style',  'sovenco-plus' ),
+                    'line_height'       => esc_html__( 'Line Height (px)', 'sovenco-plus' ),
+                    'text_decoration'   => esc_html__( 'Text Decoration', 'sovenco-plus' ),
+                    'letter_spacing'    => esc_html__( 'Letter Spacing (px)', 'sovenco-plus' ),
+                    'text_transform'    => esc_html__( 'Text Transform', 'sovenco-plus' ),
+                    'color'             => esc_html__( 'Color', 'sovenco-plus' ),
                 )
             );
 
@@ -251,11 +251,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
          * @return string
          */
         public static function get_url( ){
-            return  ONEPRESS_PLUS_URL.'inc/typography/';
+            return  sovenco_PLUS_URL.'inc/typography/';
         }
 
         public static function get_default_fonts() {
-            return onepress_typography_get_default_fonts();
+            return sovenco_typography_get_default_fonts();
         }
 
         /**
@@ -268,11 +268,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
          * @return array
          */
         static function get_google_fonts(){
-            return onepress_typography_get_google_fonts();
+            return sovenco_typography_get_google_fonts();
         }
 
         public static function get_fonts(){
-            return onepress_typography_get_fonts();
+            return sovenco_typography_get_fonts();
         }
 
         public static function get_font_by_id( $id ){
@@ -303,26 +303,26 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 
             wp_localize_script('jquery', 'typographyWebfonts',  $this->get_fonts() );
             wp_localize_script('jquery', 'fontStyleLabels', array(
-                '100'       => __( 'Thin 100', 'onepress-plus' ),
-                '100italic' => __( 'Thin 100 Italic', 'onepress-plus' ),
+                '100'       => __( 'Thin 100', 'sovenco-plus' ),
+                '100italic' => __( 'Thin 100 Italic', 'sovenco-plus' ),
                 '200'       => __( 'Extra-Light 200' ),
-                '200italic' => __( 'Extra-Light 200 Italic', 'onepress-plus' ),
+                '200italic' => __( 'Extra-Light 200 Italic', 'sovenco-plus' ),
                 '300'       => __( 'Light 300' ),
-                '300italic' => __( 'Light 300 Italic', 'onepress-plus' ),
+                '300italic' => __( 'Light 300 Italic', 'sovenco-plus' ),
                 '400'       => __( 'Normal 400' ),
-                '400italic' => __( 'Normal 400 Italic', 'onepress-plus' ),
+                '400italic' => __( 'Normal 400 Italic', 'sovenco-plus' ),
                 'regular'   => __( 'Normal' ),
-                'italic'    => __( 'Normal Italic', 'onepress-plus' ),
+                'italic'    => __( 'Normal Italic', 'sovenco-plus' ),
                 '500'       => __( 'Medium 500' ),
-                '500italic' => __( 'Medium 500 Italic', 'onepress-plus' ),
+                '500italic' => __( 'Medium 500 Italic', 'sovenco-plus' ),
                 '600'       => __( 'Semi-Bold 600' ),
-                '600italic' => __( 'Semi-Bold 600 Italic', 'onepress-plus' ),
-                '700'       => __( 'Bold 700', 'onepress-plus' ),
-                '700italic' => __( 'Bold 700 Italic', 'onepress-plus' ),
+                '600italic' => __( 'Semi-Bold 600 Italic', 'sovenco-plus' ),
+                '700'       => __( 'Bold 700', 'sovenco-plus' ),
+                '700italic' => __( 'Bold 700 Italic', 'sovenco-plus' ),
                 '800'       => __( ' Extra-Bold 800' ),
-                '800italic' => __( ' Extra-Bold 800 Italic', 'onepress-plus' ),
-                '900'       => __( 'Ultra-Bold 900', 'onepress-plus' ),
-                '900italic' => __( 'Ultra-Bold 900 Italic', 'onepress-plus' ),
+                '800italic' => __( ' Extra-Bold 800 Italic', 'sovenco-plus' ),
+                '900'       => __( 'Ultra-Bold 900', 'sovenco-plus' ),
+                '900italic' => __( 'Ultra-Bold 900 Italic', 'sovenco-plus' ),
             ) );
 
             wp_register_script( 'typography-customize-controls', esc_url( $uri . 'js/typography-controls.js' ), array( 'customize-controls' ) );
@@ -375,21 +375,21 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                         <# if ( data.fields.font_size ) { #>
                         <li class="typography-font-size typography-half right">
                             <span class="customize-control-title">{{ data.labels.size  }}</span>
-                            <input class="unit-value font-size" placeholder="<?php esc_attr_e( 'Default', 'onepress-plus' ); ?>" type="number" min="1" />
+                            <input class="unit-value font-size" placeholder="<?php esc_attr_e( 'Default', 'sovenco-plus' ); ?>" type="number" min="1" />
                         </li>
                         <# } #>
 
                         <# if ( data.fields.line_height ) { #>
                         <li class="typography-line-height first typography-half">
                             <span class="customize-control-title">{{ data.labels.line_height }}</span>
-                            <input class="unit-value line-height" placeholder="<?php esc_attr_e( 'Default', 'onepress-plus' ); ?>" type="number" min="1" />
+                            <input class="unit-value line-height" placeholder="<?php esc_attr_e( 'Default', 'sovenco-plus' ); ?>" type="number" min="1" />
                         </li>
                         <# } #>
 
                         <# if ( data.fields.letter_spacing ) { #>
                         <li class="typography-letter-spacing typography-half right">
                             <span class="customize-control-title">{{ data.labels.letter_spacing }}</span>
-                            <input class="unit-value letter-spacing" placeholder="<?php esc_attr_e( 'Default', 'onepress-plus' ); ?>" type="number" />
+                            <input class="unit-value letter-spacing" placeholder="<?php esc_attr_e( 'Default', 'sovenco-plus' ); ?>" type="number" />
                         </li>
                         <# } #>
 
@@ -397,11 +397,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                         <li class="typography-text-decoration clr">
                             <span class="customize-control-title">{{ data.labels.text_decoration }}</span>
                             <select class="text-decoration">
-                                <option value=""><?php esc_attr_e( 'Default', 'onepress-plus' ); ?></option>
-                                <option value="none"><?php esc_attr_e( 'None', 'onepress-plus' ); ?></option>
-                                <option value="overline"><?php esc_attr_e( 'Overline', 'onepress-plus' ); ?></option>
-                                <option value="underline"><?php esc_attr_e( 'Underline', 'onepress-plus' ); ?></option>
-                                <option value="line-through"><?php esc_attr_e( 'Line through', 'onepress-plus' ); ?></option>
+                                <option value=""><?php esc_attr_e( 'Default', 'sovenco-plus' ); ?></option>
+                                <option value="none"><?php esc_attr_e( 'None', 'sovenco-plus' ); ?></option>
+                                <option value="overline"><?php esc_attr_e( 'Overline', 'sovenco-plus' ); ?></option>
+                                <option value="underline"><?php esc_attr_e( 'Underline', 'sovenco-plus' ); ?></option>
+                                <option value="line-through"><?php esc_attr_e( 'Line through', 'sovenco-plus' ); ?></option>
                             </select>
                         </li>
                         <# } #>
@@ -410,11 +410,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                         <li class="typography-text-transform clr">
                             <span class="customize-control-title">{{ data.labels.text_transform }}</span>
                             <select class="text-transform" >
-                                <option value=""><?php esc_attr_e( 'Default', 'onepress-plus' ); ?></option>
-                                <option value="none"><?php esc_attr_e( 'None', 'onepress-plus' ); ?></option>
-                                <option value="uppercase"><?php esc_attr_e( 'Uppercase', 'onepress-plus' ); ?></option>
-                                <option value="lowercase"><?php esc_attr_e( 'Lowercase', 'onepress-plus' ); ?></option>
-                                <option value="capitalize"><?php esc_attr_e( 'Capitalize', 'onepress-plus' ); ?></option>
+                                <option value=""><?php esc_attr_e( 'Default', 'sovenco-plus' ); ?></option>
+                                <option value="none"><?php esc_attr_e( 'None', 'sovenco-plus' ); ?></option>
+                                <option value="uppercase"><?php esc_attr_e( 'Uppercase', 'sovenco-plus' ); ?></option>
+                                <option value="lowercase"><?php esc_attr_e( 'Lowercase', 'sovenco-plus' ); ?></option>
+                                <option value="capitalize"><?php esc_attr_e( 'Capitalize', 'sovenco-plus' ); ?></option>
                             </select>
                         </li>
                         <# } #>
