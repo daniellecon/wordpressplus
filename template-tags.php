@@ -1,5 +1,5 @@
 <?php
-function onepress_plus_team_member_socials( $member ){
+function sovenco_plus_team_member_socials( $member ){
     $member = wp_parse_args(
         $member,
         array(
@@ -36,31 +36,31 @@ function onepress_plus_team_member_socials( $member ){
     <?php
 }
 
-add_action( 'onepress_section_team_member_media', 'onepress_plus_team_member_socials' );
+add_action( 'sovenco_section_team_member_media', 'sovenco_plus_team_member_socials' );
 
 /**
  * Add docs links
  */
-function onepress_plus_dashboard_theme_links(){
+function sovenco_plus_dashboard_theme_links(){
     ?>
     <p>
-        <a href="http://docs.famethemes.com/category/50-onepress-plus" target="_blank" class="button button-primary"><?php esc_html_e('OnePress Plus Documentation', 'onepress-plus'); ?></a>
+        <a href="http://docs.famethemes.com/category/50-sovenco-plus" target="_blank" class="button button-primary"><?php esc_html_e('sovenco Plus Documentation', 'sovenco-plus'); ?></a>
     </p>
     <?php
 }
-add_action( 'onepress_dashboard_theme_links', 'onepress_plus_dashboard_theme_links' );
+add_action( 'sovenco_dashboard_theme_links', 'sovenco_plus_dashboard_theme_links' );
 
 /**
  * Change theme footer info
  */
-function onepress_plus_add_theme_footer_info(){
-    $c =  get_theme_mod( 'onepress_footer_copyright_text', sprintf( esc_html__( 'Copyright %1$s %2$s %3$s', 'onepress-plus' ), '&copy;', esc_attr( date( 'Y' ) ), esc_attr( get_bloginfo() ) ) );
-    $d = get_theme_mod( 'onepress_hide_author_link' );
+function sovenco_plus_add_theme_footer_info(){
+    $c =  get_theme_mod( 'sovenco_footer_copyright_text', sprintf( esc_html__( 'Copyright %1$s %2$s %3$s', 'sovenco-plus' ), '&copy;', esc_attr( date( 'Y' ) ), esc_attr( get_bloginfo() ) ) );
+    $d = get_theme_mod( 'sovenco_hide_author_link' );
     if ( ! $d ) {
         if ( $c ) {
             $c.= '<span class="sep"> &ndash; </span>';
         }
-        $c.= sprintf(esc_html__('%1$s theme by %2$s', 'onepress-plus'), '<a href="' . esc_url('https://www.famethemes.com/themes/onepress', 'onepress-plus') . '">OnePress</a>', 'FameThemes');
+        $c.= sprintf(esc_html__('%1$s theme by %2$s', 'sovenco-plus'), '<a href="' . esc_url('https://www.famethemes.com/themes/sovenco', 'sovenco-plus') . '">sovenco</a>', 'FameThemes');
     }
     echo $c;
 }
@@ -71,22 +71,22 @@ function onepress_plus_add_theme_footer_info(){
  * @todo Remove default theme hook
  * @todo Add new plugin hook
  */
-function onepress_plus_change_theme_footer_info(){
-    remove_action( 'onepress_footer_site_info', 'onepress_footer_site_info' );
-    add_action( 'onepress_footer_site_info', 'onepress_plus_add_theme_footer_info' );
+function sovenco_plus_change_theme_footer_info(){
+    remove_action( 'sovenco_footer_site_info', 'sovenco_footer_site_info' );
+    add_action( 'sovenco_footer_site_info', 'sovenco_plus_add_theme_footer_info' );
 }
-add_action( 'wp_loaded', 'onepress_plus_change_theme_footer_info'  );
+add_action( 'wp_loaded', 'sovenco_plus_change_theme_footer_info'  );
 
-if ( ! function_exists( 'onepress_is_selective_refresh' ) ) {
-    function onepress_is_selective_refresh()
+if ( ! function_exists( 'sovenco_is_selective_refresh' ) ) {
+    function sovenco_is_selective_refresh()
     {
-        return isset($GLOBALS['onepress_is_selective_refresh']) && $GLOBALS['onepress_is_selective_refresh'] ? true : false;
+        return isset($GLOBALS['sovenco_is_selective_refresh']) && $GLOBALS['sovenco_is_selective_refresh'] ? true : false;
     }
 }
 
 // based on https://gist.github.com/cosmocatalano/4544576
-if ( ! function_exists( 'onepress_scrape_instagram' ) ) {
-    function onepress_scrape_instagram( $username )
+if ( ! function_exists( 'sovenco_scrape_instagram' ) ) {
+    function sovenco_scrape_instagram( $username )
     {
         $username = strtolower($username);
         $username = str_replace('@', '', $username);
@@ -135,7 +135,7 @@ if ( ! function_exists( 'onepress_scrape_instagram' ) ) {
             } else {
                 $type = 'image';
             }
-            $caption = esc_html__('Instagram Image', 'onepress');
+            $caption = esc_html__('Instagram Image', 'sovenco');
             if (!empty($image['caption'])) {
                 $caption = $image['caption'];
             }
@@ -159,7 +159,7 @@ if ( ! function_exists( 'onepress_scrape_instagram' ) ) {
 }
 
 
-if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
+if ( ! function_exists( 'sovenco_plus_get_section_gallery_data' ) ) {
     /**
      * Get Gallery data
      *
@@ -167,11 +167,11 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
      *
      * @return array
      */
-    function onepress_plus_get_section_gallery_data()
+    function sovenco_plus_get_section_gallery_data()
     {
 
-        $source = get_theme_mod( 'onepress_gallery_source', 'page' );
-        $data =  apply_filters( 'onepress_plus_get_section_gallery_data', false );
+        $source = get_theme_mod( 'sovenco_gallery_source', 'page' );
+        $data =  apply_filters( 'sovenco_plus_get_section_gallery_data', false );
         if ( $data ) {
             return $data;
         }
@@ -184,38 +184,38 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
             case 'instagram':
 
                 //Example:  https://www.instagram.com/taylorswift/media/
-                $user_id = wp_strip_all_tags( get_theme_mod( 'onepress_gallery_source_instagram' ) );
+                $user_id = wp_strip_all_tags( get_theme_mod( 'sovenco_gallery_source_instagram' ) );
                 if ( ! $user_id ) {
                     return $data;
                 }
                 // Check cache
-                //delete_transient( 'onepress_gallery_'.$source.'_'.$user_id );
-                $data = get_transient( 'onepress_gallery_'.$source.'_'.$user_id.$number_item );
+                //delete_transient( 'sovenco_gallery_'.$source.'_'.$user_id );
+                $data = get_transient( 'sovenco_gallery_'.$source.'_'.$user_id.$number_item );
                 if ( false !== $data && is_array( $data ) ) {
                     return $data;
                 }
-                $data = onepress_scrape_instagram( $user_id );
+                $data = sovenco_scrape_instagram( $user_id );
 
                 if ( ! empty( $data ) ) {
-                    set_transient('onepress_gallery_' . $source . '_' . $user_id.$number_item, $data, $transient_expired);
+                    set_transient('sovenco_gallery_' . $source . '_' . $user_id.$number_item, $data, $transient_expired);
                 } else {
-                    delete_transient( 'onepress_gallery_'.$source.'_'.$user_id.$number_item );
+                    delete_transient( 'sovenco_gallery_'.$source.'_'.$user_id.$number_item );
                 }
 
                 break;
             case 'flickr':
 
-                $api_key = get_theme_mod( 'onepress_gallery_api_flickr', 'a68c0befe246035b74a8f67943da7edc' );
+                $api_key = get_theme_mod( 'sovenco_gallery_api_flickr', 'a68c0befe246035b74a8f67943da7edc' );
                 if ( ! $api_key ) {
                     return $data;
                 }
-                $user_id = wp_strip_all_tags( get_theme_mod( 'onepress_gallery_source_flickr' ) );
+                $user_id = wp_strip_all_tags( get_theme_mod( 'sovenco_gallery_source_flickr' ) );
                 if ( ! $user_id ) {
                     return $data;
                 }
 
                 // Check cache
-                $data = get_transient( 'onepress_gallery_'.$source.'_'.$user_id.$number_item );
+                $data = get_transient( 'sovenco_gallery_'.$source.'_'.$user_id.$number_item );
                 if ( false !== $data && is_array( $data ) ) {
                     return $data;
                 }
@@ -278,16 +278,16 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
                 }
 
                 if ( ! empty( $data ) ) {
-                    set_transient( 'onepress_gallery_'.$source.'_'.$user_id.$number_item, $data, $transient_expired );
+                    set_transient( 'sovenco_gallery_'.$source.'_'.$user_id.$number_item, $data, $transient_expired );
                 } else {
-                    delete_transient( 'onepress_gallery_'.$source.'_'.$user_id.$number_item );
+                    delete_transient( 'sovenco_gallery_'.$source.'_'.$user_id.$number_item );
                 }
 
 
                 break;
             case 'facebook':
                 $album_id = false;
-                $album_url = get_theme_mod( 'onepress_gallery_source_facebook', '' );
+                $album_url = get_theme_mod( 'sovenco_gallery_source_facebook', '' );
                 preg_match( '/a\.(.*?)\.(.*?)/', $album_url, $arr );
                 if ( $arr ) {
                     $album_id = $arr[1];
@@ -308,13 +308,13 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
                 if ( ! $album_id ) {
                     return false;
                 }
-                $token = get_theme_mod( 'onepress_gallery_api_facebook', '1813325532276774|c0e7681c4a5727a6ca5d31020d0b44b0' );
+                $token = get_theme_mod( 'sovenco_gallery_api_facebook', '1813325532276774|c0e7681c4a5727a6ca5d31020d0b44b0' );
                 if ( ! $token ) {
                     return false;
                 }
 
                 // Check cache
-                $data = get_transient( 'onepress_gallery_'.$source.'_'.$album_id.$number_item );
+                $data = get_transient( 'sovenco_gallery_'.$source.'_'.$album_id.$number_item );
                 if ( false !== $data && is_array( $data ) ) {
                     return $data;
                 }
@@ -355,14 +355,14 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
                 }
 
                 if ( ! empty( $data ) ) {
-                    set_transient('onepress_gallery_' . $source . '_' . $album_id.$number_item, $data, $transient_expired);
+                    set_transient('sovenco_gallery_' . $source . '_' . $album_id.$number_item, $data, $transient_expired);
                 } else {
-                    delete_transient( 'onepress_gallery_'.$source.'_'.$album_id.$number_item );
+                    delete_transient( 'sovenco_gallery_'.$source.'_'.$album_id.$number_item );
                 }
 
                 break;
             case "page":
-                $page_id = get_theme_mod( 'onepress_gallery_source_page' );
+                $page_id = get_theme_mod( 'sovenco_gallery_source_page' );
                 $images = '';
                 if ( $page_id ) {
                     $gallery = get_post_gallery( $page_id , false );
@@ -371,14 +371,14 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
                     }
                 }
 
-                $display_type = get_theme_mod( 'onepress_gallery_display', 'grid' );
+                $display_type = get_theme_mod( 'sovenco_gallery_display', 'grid' );
                 if ( $display_type == 'masonry' || $display_type == ' justified' ) {
                     $size = 'large';
                 } else {
-                    $size = 'onepress-small';
+                    $size = 'sovenco-small';
                 }
 
-                $image_thumb_size = apply_filters( 'onepress_gallery_page_img_size', $size );
+                $image_thumb_size = apply_filters( 'sovenco_gallery_page_img_size', $size );
 
                 if ( ! empty( $images ) ) {
                     $images = explode( ',', $images );
@@ -416,7 +416,7 @@ if ( ! function_exists( 'onepress_plus_get_section_gallery_data' ) ) {
     }
 }
 
-add_filter( 'onepress_get_section_gallery_data', 'onepress_plus_get_section_gallery_data' );
+add_filter( 'sovenco_get_section_gallery_data', 'sovenco_plus_get_section_gallery_data' );
 
 
 
