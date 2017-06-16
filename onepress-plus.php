@@ -1,23 +1,23 @@
 <?php
 /*
-Plugin Name: OnePress Plus
+Plugin Name: sovenco Plus
 Plugin URI: http://www.famethemes.com/
-Description: The OnePress Plus plugin adds powerful premium features to OnePress theme.
+Description: The sovenco Plus plugin adds powerful premium features to sovenco theme.
 Author: famethemes
 Author URI:  http://www.famethemes.com/
 Version: 1.2.5
-Text Domain: onepress-plus
+Text Domain: sovenco-plus
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
-define( 'ONEPRESS_PLUS_URL',  trailingslashit( plugins_url('', __FILE__) ));
-define( 'ONEPRESS_PLUS_PATH', trailingslashit( plugin_dir_path( __FILE__) ) );
+define( 'sovenco_PLUS_URL',  trailingslashit( plugins_url('', __FILE__) ));
+define( 'sovenco_PLUS_PATH', trailingslashit( plugin_dir_path( __FILE__) ) );
 
 
 /**
- * Class OnePress_PLus
+ * Class sovenco_PLus
  */
-class OnePress_PLus {
+class sovenco_PLus {
 
 
     /**
@@ -37,28 +37,28 @@ class OnePress_PLus {
 
     function __construct(){
 
-        load_plugin_textdomain( 'onepress-plus', false, ONEPRESS_PLUS_PATH . 'languages' );
+        load_plugin_textdomain( 'sovenco-plus', false, sovenco_PLUS_PATH . 'languages' );
 
         if ( ! function_exists( 'get_plugin_data' ) ) {
             require_once ABSPATH .'wp-admin/includes/plugin.php';
         }
         $plugin_data = get_plugin_data( __FILE__ );
-        define( 'ONEPRESS_PLUS_VERSION', $plugin_data['Version'] );
+        define( 'sovenco_PLUS_VERSION', $plugin_data['Version'] );
 
-        add_action( 'onepress_frontpage_section_parts', array( $this, 'load_section_parts' ) );
-        add_filter( 'onepress_reepeatable_max_item', array( $this, 'unlimited_repeatable_items' ) );
-        add_action( 'onepress_customize_after_register', array( $this, 'plugin_customize' ), 40 );
+        add_action( 'sovenco_frontpage_section_parts', array( $this, 'load_section_parts' ) );
+        add_filter( 'sovenco_reepeatable_max_item', array( $this, 'unlimited_repeatable_items' ) );
+        add_action( 'sovenco_customize_after_register', array( $this, 'plugin_customize' ), 40 );
         add_action( 'wp', array( $this, 'int_setup' ) );
 
         add_action( 'wp_enqueue_scripts',  array( $this, 'custom_css' ) , 150 );
         add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ), 60 );
 
-        require_once ONEPRESS_PLUS_PATH.'inc/post-type.php';
-        require_once ONEPRESS_PLUS_PATH.'inc/template-tags.php';
-        require_once ONEPRESS_PLUS_PATH.'inc/typography/helper.php';
-        require_once ONEPRESS_PLUS_PATH.'inc/typography/auto-apply.php';
-        require_once ONEPRESS_PLUS_PATH.'inc/auto-update/auto-update.php';
-        require_once ONEPRESS_PLUS_PATH.'inc/ajax.php';
+        require_once sovenco_PLUS_PATH.'inc/post-type.php';
+        require_once sovenco_PLUS_PATH.'inc/template-tags.php';
+        require_once sovenco_PLUS_PATH.'inc/typography/helper.php';
+        require_once sovenco_PLUS_PATH.'inc/typography/auto-apply.php';
+        require_once sovenco_PLUS_PATH.'inc/auto-update/auto-update.php';
+        require_once sovenco_PLUS_PATH.'inc/ajax.php';
         /**
          * @todo Include custom template file
          */
@@ -67,7 +67,7 @@ class OnePress_PLus {
         /**
          * @todo add selective refresh
          */
-        add_filter( 'onepress_customizer_partials_selective_refresh_keys', array( $this, 'selective_refresh' ) );
+        add_filter( 'sovenco_customizer_partials_selective_refresh_keys', array( $this, 'selective_refresh' ) );
 
         // hook to import data
         add_action( 'ft_demo_import_current_item', array( $this, 'auto_import_id' ), 45 );
@@ -76,7 +76,7 @@ class OnePress_PLus {
     }
 
     function wp(){
-        $gallery_mod_name = 'onepress_gallery_disable';
+        $gallery_mod_name = 'sovenco_gallery_disable';
         add_filter( 'theme_mod_'.$gallery_mod_name, array( $this, 'filter_gallery_disable' ) );
     }
 
@@ -91,7 +91,7 @@ class OnePress_PLus {
     }
 
     function auto_import_id(){
-        return 'onepress-plus';
+        return 'sovenco-plus';
     }
 
     /**
@@ -106,11 +106,11 @@ class OnePress_PLus {
                 'id' => 'clients',
                 'selector' => '.section-clients',
                 'settings' => array(
-                    'onepress_clients',
-                    'onepress_clients_title',
-                    'onepress_clients_subtitle',
-                    'onepress_clients_layout',
-                    'onepress_clients_desc',
+                    'sovenco_clients',
+                    'sovenco_clients_title',
+                    'sovenco_clients_subtitle',
+                    'sovenco_clients_layout',
+                    'sovenco_clients_desc',
                 ),
             ),
 
@@ -119,10 +119,10 @@ class OnePress_PLus {
                 'id' => 'cta',
                 'selector' => '.section-cta',
                 'settings' => array(
-                    'onepress_cta_title',
-                    'onepress_cta_btn_label',
-                    'onepress_cta_btn_link',
-                    'onepress_cta_btn_link_style',
+                    'sovenco_cta_title',
+                    'sovenco_cta_btn_label',
+                    'sovenco_cta_btn_link',
+                    'sovenco_cta_btn_link_style',
                 ),
             ),
 
@@ -131,10 +131,10 @@ class OnePress_PLus {
                 'id' => 'pricing',
                 'selector' => '.section-pricing',
                 'settings' => array(
-                    'onepress_pricing_plans',
-                    'onepress_pricing_title',
-                    'onepress_pricing_subtitle',
-                    'onepress_pricing_desc',
+                    'sovenco_pricing_plans',
+                    'sovenco_pricing_title',
+                    'sovenco_pricing_subtitle',
+                    'sovenco_pricing_desc',
                 ),
             ),
             // + section projects
@@ -142,12 +142,12 @@ class OnePress_PLus {
                 'id' => 'projects',
                 'selector' => '.section-projects',
                 'settings' => array(
-                    'onepress_projects_title',
-                    'onepress_projects_subtitle',
-                    'onepress_projects_desc',
-                    'onepress_projects_number',
-                    'onepress_projects_orderby',
-                    'onepress_projects_order',
+                    'sovenco_projects_title',
+                    'sovenco_projects_subtitle',
+                    'sovenco_projects_desc',
+                    'sovenco_projects_number',
+                    'sovenco_projects_orderby',
+                    'sovenco_projects_order',
                 ),
             ),
 
@@ -156,10 +156,10 @@ class OnePress_PLus {
                 'id' => 'testimonials',
                 'selector' => '.section-testimonials',
                 'settings' => array(
-                    'onepress_testimonial_boxes',
-                    'onepress_testimonial_title',
-                    'onepress_testimonial_subtitle',
-                    'onepress_testimonial_desc',
+                    'sovenco_testimonial_boxes',
+                    'sovenco_testimonial_title',
+                    'sovenco_testimonial_subtitle',
+                    'sovenco_testimonial_desc',
                 ),
             ),
         );
@@ -167,24 +167,24 @@ class OnePress_PLus {
         $settings = array_merge( $settings, $plus_settings );
         if ( isset( $settings['gallery'] ) ) {
             $settings['gallery']['settings'] = array(
-                'onepress_gallery_source',
-                'onepress_gallery_title',
-                'onepress_gallery_subtitle',
-                'onepress_gallery_desc',
+                'sovenco_gallery_source',
+                'sovenco_gallery_title',
+                'sovenco_gallery_subtitle',
+                'sovenco_gallery_desc',
 
-                'onepress_gallery_source_page',
-                'onepress_gallery_source_flickr',
-                'onepress_gallery_api_flickr',
-                'onepress_gallery_source_facebook',
-                'onepress_gallery_api_facebook',
-                'onepress_gallery_layout',
-                'onepress_gallery_display',
-                'onepress_g_number',
-                'onepress_g_row_height',
-                'onepress_g_col',
+                'sovenco_gallery_source_page',
+                'sovenco_gallery_source_flickr',
+                'sovenco_gallery_api_flickr',
+                'sovenco_gallery_source_facebook',
+                'sovenco_gallery_api_facebook',
+                'sovenco_gallery_layout',
+                'sovenco_gallery_display',
+                'sovenco_g_number',
+                'sovenco_g_row_height',
+                'sovenco_g_col',
 
-                'onepress_g_readmore_link',
-                'onepress_g_readmore_text',
+                'sovenco_g_readmore_link',
+                'sovenco_g_readmore_text',
             );
         }
 
@@ -214,8 +214,8 @@ class OnePress_PLus {
                 if ( $is_child && file_exists( STYLESHEETPATH . '/' . $template_name ) ) {  // Child them
                     $located = STYLESHEETPATH . '/' . $template_name;
                     break;
-                } elseif ( file_exists( ONEPRESS_PLUS_PATH .'templates/' . $template_name ) ) { // Check part in the plugin
-                    $located = ONEPRESS_PLUS_PATH .'templates/'. $template_name;
+                } elseif ( file_exists( sovenco_PLUS_PATH .'templates/' . $template_name ) ) { // Check part in the plugin
+                    $located = sovenco_PLUS_PATH .'templates/'. $template_name;
                     break;
                 } elseif ( file_exists(TEMPLATEPATH . '/' . $template_name) ) { // current_theme
                     $located = TEMPLATEPATH . '/' . $template_name;
@@ -238,48 +238,48 @@ class OnePress_PLus {
      */
     function remove_hide_control_sections( $wp_customize ){
 
-        //$wp_customize->remove_setting( 'onepress_hero_disable' );
-        //$wp_customize->remove_control( 'onepress_hero_disable' );
+        //$wp_customize->remove_setting( 'sovenco_hero_disable' );
+        //$wp_customize->remove_control( 'sovenco_hero_disable' );
 
-        $wp_customize->remove_setting( 'onepress_features_disable' );
-        $wp_customize->remove_control( 'onepress_features_disable' );
+        $wp_customize->remove_setting( 'sovenco_features_disable' );
+        $wp_customize->remove_control( 'sovenco_features_disable' );
 
-        $wp_customize->remove_setting( 'onepress_about_disable' );
-        $wp_customize->remove_control( 'onepress_about_disable' );
+        $wp_customize->remove_setting( 'sovenco_about_disable' );
+        $wp_customize->remove_control( 'sovenco_about_disable' );
 
-        $wp_customize->remove_setting( 'onepress_services_disable' );
-        $wp_customize->remove_control( 'onepress_services_disable' );
+        $wp_customize->remove_setting( 'sovenco_services_disable' );
+        $wp_customize->remove_control( 'sovenco_services_disable' );
 
-        $wp_customize->remove_setting( 'onepress_counter_disable' );
-        $wp_customize->remove_control( 'onepress_counter_disable' );
+        $wp_customize->remove_setting( 'sovenco_counter_disable' );
+        $wp_customize->remove_control( 'sovenco_counter_disable' );
 
-        $wp_customize->remove_setting( 'onepress_testimonials_disable' );
-        $wp_customize->remove_control( 'onepress_testimonials_disable' );
+        $wp_customize->remove_setting( 'sovenco_testimonials_disable' );
+        $wp_customize->remove_control( 'sovenco_testimonials_disable' );
 
-        $wp_customize->remove_setting( 'onepress_team_disable' );
-        $wp_customize->remove_control( 'onepress_team_disable' );
+        $wp_customize->remove_setting( 'sovenco_team_disable' );
+        $wp_customize->remove_control( 'sovenco_team_disable' );
 
-        $wp_customize->remove_setting( 'onepress_news_disable' );
-        $wp_customize->remove_control( 'onepress_news_disable' );
+        $wp_customize->remove_setting( 'sovenco_news_disable' );
+        $wp_customize->remove_control( 'sovenco_news_disable' );
 
-        $wp_customize->remove_setting( 'onepress_contact_disable' );
-        $wp_customize->remove_control( 'onepress_contact_disable' );
+        $wp_customize->remove_setting( 'sovenco_contact_disable' );
+        $wp_customize->remove_control( 'sovenco_contact_disable' );
 
         // Remove upsell panel/section
-        $wp_customize->remove_setting( 'onepress_order_styling_message' );
-        $wp_customize->remove_control( 'onepress_order_styling_message' );
+        $wp_customize->remove_setting( 'sovenco_order_styling_message' );
+        $wp_customize->remove_control( 'sovenco_order_styling_message' );
 
-        $wp_customize->remove_setting( 'onepress_videolightbox_image' );
-        $wp_customize->remove_control( 'onepress_videolightbox_image' );
-        $wp_customize->remove_control( 'onepress_videolightbox_disable' );
-        $wp_customize->remove_control( 'onepress_videolightbox_disable' );
+        $wp_customize->remove_setting( 'sovenco_videolightbox_image' );
+        $wp_customize->remove_control( 'sovenco_videolightbox_image' );
+        $wp_customize->remove_control( 'sovenco_videolightbox_disable' );
+        $wp_customize->remove_control( 'sovenco_videolightbox_disable' );
 
-        $wp_customize->remove_setting( 'onepress_gallery_disable' );
-        $wp_customize->remove_control( 'onepress_gallery_disable' );
-        remove_theme_mod( 'onepress_gallery_disable' );
+        $wp_customize->remove_setting( 'sovenco_gallery_disable' );
+        $wp_customize->remove_control( 'sovenco_gallery_disable' );
+        remove_theme_mod( 'sovenco_gallery_disable' );
 
         // Remove hero background media upsell
-        $wp_customize->remove_control( 'onepress_hero_videobackground_upsell' );
+        $wp_customize->remove_control( 'sovenco_hero_videobackground_upsell' );
 
     }
 
@@ -289,10 +289,10 @@ class OnePress_PLus {
      * @return array
      */
     function get_default_sections_settings(){
-        return apply_filters( 'onepress_get_default_sections_settings', array(
+        return apply_filters( 'sovenco_get_default_sections_settings', array(
 
                 array(
-                    'title' => esc_html__( 'Clients', 'onepress-plus' ),
+                    'title' => esc_html__( 'Clients', 'sovenco-plus' ),
                     'section_id' => 'clients',
                     'show_section' => '1',
                     'bg_color' => '',
@@ -307,9 +307,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Features', 'onepress-plus' ),
+                    'title' => esc_html__( 'Features', 'sovenco-plus' ),
                     'section_id' => 'features',
-                    'show_section' => get_theme_mod( 'onepress_features_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_features_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -321,9 +321,9 @@ class OnePress_PLus {
                     'padding_bottom' => '',
                 ),
                 array(
-                    'title' => esc_html__( 'About', 'onepress-plus' ),
+                    'title' => esc_html__( 'About', 'sovenco-plus' ),
                     'section_id' => 'about',
-                    'show_section' => get_theme_mod( 'onepress_about_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_about_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -335,9 +335,9 @@ class OnePress_PLus {
                     'padding_bottom' => '',
                 ),
                 array(
-                    'title' => esc_html__( 'Services', 'onepress-plus' ),
+                    'title' => esc_html__( 'Services', 'sovenco-plus' ),
                     'section_id' => 'services',
-                    'show_section' => get_theme_mod( 'onepress_services_id', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_services_id', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -350,9 +350,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Videolightbox', 'onepress-plus' ),
+                    'title' => esc_html__( 'Videolightbox', 'sovenco-plus' ),
                     'section_id' => 'videolightbox',
-                    'show_section' => get_theme_mod( 'onepress_videolightbox_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_videolightbox_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -368,9 +368,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Gallery', 'onepress-plus' ),
+                    'title' => esc_html__( 'Gallery', 'sovenco-plus' ),
                     'section_id' => 'gallery',
-                    'show_section' => get_theme_mod( 'onepress_gallery_disable', 1 ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_gallery_disable', 1 ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -383,7 +383,7 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Projects', 'onepress-plus' ),
+                    'title' => esc_html__( 'Projects', 'sovenco-plus' ),
                     'section_id' => 'projects',
                     'show_section' => 1,
                     'bg_color' => '',
@@ -398,9 +398,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Counter', 'onepress-plus' ),
+                    'title' => esc_html__( 'Counter', 'sovenco-plus' ),
                     'section_id' => 'counter',
-                    'show_section' => get_theme_mod( 'onepress_counter_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_counter_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -413,9 +413,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Testimonials', 'onepress-plus' ),
+                    'title' => esc_html__( 'Testimonials', 'sovenco-plus' ),
                     'section_id' => 'testimonials',
-                    'show_section' => get_theme_mod( 'onepress_testimonials_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_testimonials_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -428,9 +428,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Pricing', 'onepress-plus' ),
+                    'title' => esc_html__( 'Pricing', 'sovenco-plus' ),
                     'section_id' => 'pricing',
-                    'show_section' => get_theme_mod( 'onepress_pricing_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_pricing_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -443,7 +443,7 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Call to Action', 'onepress-plus' ),
+                    'title' => esc_html__( 'Call to Action', 'sovenco-plus' ),
                     'section_id' => 'cta',
                     'show_section' => 1,
                     'bg_color' => '',
@@ -458,9 +458,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Team', 'onepress-plus' ),
+                    'title' => esc_html__( 'Team', 'sovenco-plus' ),
                     'section_id' => 'team',
-                    'show_section' => get_theme_mod( 'onepress_team_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_team_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -473,9 +473,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'News', 'onepress-plus' ),
+                    'title' => esc_html__( 'News', 'sovenco-plus' ),
                     'section_id' => 'news',
-                    'show_section' => get_theme_mod( 'onepress_news_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_news_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -488,9 +488,9 @@ class OnePress_PLus {
                 ),
 
                 array(
-                    'title' => esc_html__( 'Contact', 'onepress-plus' ),
+                    'title' => esc_html__( 'Contact', 'sovenco-plus' ),
                     'section_id' => 'contact',
-                    'show_section' => get_theme_mod( 'onepress_contact_disable', '' ) == 1 ?  '': 1,
+                    'show_section' => get_theme_mod( 'sovenco_contact_disable', '' ) == 1 ?  '': 1,
                     'bg_color' => '',
                     'bg_opacity' => '',
                     'bg_opacity_color' => '',
@@ -504,7 +504,7 @@ class OnePress_PLus {
 
 
                 array(
-                    'title' => esc_html__( 'Map', 'onepress-plus' ),
+                    'title' => esc_html__( 'Map', 'sovenco-plus' ),
                     'section_id' => 'map',
                     'show_section' => '1',
                     'bg_color' => '',
@@ -531,74 +531,74 @@ class OnePress_PLus {
 
         $this->remove_hide_control_sections( $wp_customize );
 
-        include_once ONEPRESS_PLUS_PATH.'inc/typography/typography.php';
+        include_once sovenco_PLUS_PATH.'inc/typography/typography.php';
 
         // Theme Global
         // Copyright text option
-        $wp_customize->add_setting( 'onepress_footer_copyright_text',
+        $wp_customize->add_setting( 'sovenco_footer_copyright_text',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
-                'default'           => sprintf( esc_html__( 'Copyright %1$s %2$s %3$s', 'onepress-plus' ), '&copy;', esc_attr( date( 'Y' ) ), esc_attr( get_bloginfo() ) ),
+                'sanitize_callback' => 'sovenco_sanitize_text',
+                'default'           => sprintf( esc_html__( 'Copyright %1$s %2$s %3$s', 'sovenco-plus' ), '&copy;', esc_attr( date( 'Y' ) ), esc_attr( get_bloginfo() ) ),
             )
         );
 
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_footer_copyright_text',
+            'sovenco_footer_copyright_text',
             array(
-                'label'       => esc_html__('Footer Copyright', 'onepress-plus'),
-                'section'     => 'onepress_global_settings',
-                'description' => esc_html__('Arbitrary text or HTML.', 'onepress-plus')
+                'label'       => esc_html__('Footer Copyright', 'sovenco-plus'),
+                'section'     => 'sovenco_global_settings',
+                'description' => esc_html__('Arbitrary text or HTML.', 'sovenco-plus')
             )
         ));
 
         // Disable theme author link
-        $wp_customize->add_setting( 'onepress_hide_author_link',
+        $wp_customize->add_setting( 'sovenco_hide_author_link',
             array(
-                'sanitize_callback' => 'onepress_sanitize_checkbox',
+                'sanitize_callback' => 'sovenco_sanitize_checkbox',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_hide_author_link',
+        $wp_customize->add_control( 'sovenco_hide_author_link',
             array(
                 'type'        => 'checkbox',
-                'label'       => esc_html__('Hide theme author link?', 'onepress-plus'),
-                'section'     => 'onepress_global_settings',
-                'description' => esc_html__('Check this box to hide theme author link.', 'onepress-plus')
+                'label'       => esc_html__('Hide theme author link?', 'sovenco-plus'),
+                'section'     => 'sovenco_global_settings',
+                'description' => esc_html__('Check this box to hide theme author link.', 'sovenco-plus')
             )
         );
 
         // Typography
         // Register typography control JS template.
-        $wp_customize->register_control_type( 'OnePress_Customize_Typography_Control' );
+        $wp_customize->register_control_type( 'sovenco_Customize_Typography_Control' );
 
-       $wp_customize->add_panel( 'onepress_typo', array( 'priority' => 25, 'title' => esc_html__( 'Typography', 'onepress-plus' ) ) );
+       $wp_customize->add_panel( 'sovenco_typo', array( 'priority' => 25, 'title' => esc_html__( 'Typography', 'sovenco-plus' ) ) );
 
         // For P tag
         $wp_customize->add_section(
-            'onepress_typography_section',
-            array( 'panel'=> 'onepress_typo',
-                'title' => esc_html__( 'Paragraphs', 'onepress-plus' ), 'priority' => 5, )
+            'sovenco_typography_section',
+            array( 'panel'=> 'sovenco_typo',
+                'title' => esc_html__( 'Paragraphs', 'sovenco-plus' ), 'priority' => 5, )
         );
 
         // Add the `<p>` typography settings.
         // @todo Better sanitize_callback functions.
         $wp_customize->add_setting(
-            'onepress_typo_p',
+            'sovenco_typo_p',
             array(
-                'sanitize_callback' => 'onepress_sanitize_typography_field',
+                'sanitize_callback' => 'sovenco_sanitize_typography_field',
                 'transport' => 'postMessage'
             )
         );
 
         $wp_customize->add_control(
-            new OnePress_Customize_Typography_Control(
+            new sovenco_Customize_Typography_Control(
                 $wp_customize,
-                'onepress_typo_p',
+                'sovenco_typo_p',
                 array(
-                    'label'       => esc_html__( 'Paragraph Typography', 'onepress-plus' ),
-                    'description' => esc_html__( 'Select how you want your paragraphs to appear.', 'onepress-plus' ),
-                    'section'       => 'onepress_typography_section',
+                    'label'       => esc_html__( 'Paragraph Typography', 'sovenco-plus' ),
+                    'description' => esc_html__( 'Select how you want your paragraphs to appear.', 'sovenco-plus' ),
+                    'section'       => 'sovenco_typography_section',
                     'css_selector'       => 'body p, body', // css selector for live view
                     'fields' => array(
                         'font-family'     => '',
@@ -617,31 +617,31 @@ class OnePress_PLus {
 
         // For Menu
         $wp_customize->add_section(
-            'onepress_typo_menu_section',
+            'sovenco_typo_menu_section',
             array(
-                'panel'=> 'onepress_typo',
-                'title' => esc_html__( 'Menu', 'onepress-plus' ), 'priority' => 5, )
+                'panel'=> 'sovenco_typo',
+                'title' => esc_html__( 'Menu', 'sovenco-plus' ), 'priority' => 5, )
         );
 
         // Add the menu typography settings.
 
        // Site title font
         $wp_customize->add_setting(
-            'onepress_typo_site_title',
+            'sovenco_typo_site_title',
             array(
-                'sanitize_callback' => 'onepress_sanitize_typography_field',
+                'sanitize_callback' => 'sovenco_sanitize_typography_field',
                 'transport' => 'postMessage',
                 'priority' => 100,
             )
         );
 
         $wp_customize->add_control(
-            new OnePress_Customize_Typography_Control(
+            new sovenco_Customize_Typography_Control(
                 $wp_customize,
-                'onepress_typo_site_title',
+                'sovenco_typo_site_title',
                 array(
-                    'label'       => esc_html__( 'Site title Typography', 'onepress-plus' ),
-                    'description' => esc_html__( 'Select how you want your site to appear.', 'onepress-plus' ),
+                    'label'       => esc_html__( 'Site title Typography', 'sovenco-plus' ),
+                    'description' => esc_html__( 'Select how you want your site to appear.', 'sovenco-plus' ),
                     'section'       => 'title_tagline',
                     'css_selector'       => '#page .site-branding .site-title, #page .site-branding .site-text-logo', // css selector for live view
                     'fields' => array(
@@ -656,9 +656,9 @@ class OnePress_PLus {
 
         // Site tagline font
         $wp_customize->add_setting(
-            'onepress_typo_site_tagline',
+            'sovenco_typo_site_tagline',
             array(
-                'sanitize_callback' => 'onepress_sanitize_typography_field',
+                'sanitize_callback' => 'sovenco_sanitize_typography_field',
                 'transport' => 'postMessage',
                 'priority' => 120,
             )
@@ -666,12 +666,12 @@ class OnePress_PLus {
         );
 
         $wp_customize->add_control(
-            new OnePress_Customize_Typography_Control(
+            new sovenco_Customize_Typography_Control(
                 $wp_customize,
-                'onepress_typo_site_tagline',
+                'sovenco_typo_site_tagline',
                 array(
-                    'label'       => esc_html__( 'Site Tagline Typography', 'onepress-plus' ),
-                    'description' => esc_html__( 'Select how you want your site to appear.', 'onepress-plus' ),
+                    'label'       => esc_html__( 'Site Tagline Typography', 'sovenco-plus' ),
+                    'description' => esc_html__( 'Select how you want your site to appear.', 'sovenco-plus' ),
                     'section'       => 'title_tagline',
                     'css_selector'       => '#page .site-branding .site-description', // css selector for live view
                     'fields' => array(
@@ -688,22 +688,22 @@ class OnePress_PLus {
 
         // @todo Better sanitize_callback functions.
         $wp_customize->add_setting(
-            'onepress_typo_menu',
+            'sovenco_typo_menu',
             array(
-                'sanitize_callback' => 'onepress_sanitize_typography_field',
+                'sanitize_callback' => 'sovenco_sanitize_typography_field',
                 'transport' => 'postMessage'
             )
         );
 
         $wp_customize->add_control(
-            new OnePress_Customize_Typography_Control(
+            new sovenco_Customize_Typography_Control(
                 $wp_customize,
-                'onepress_typo_menu',
+                'sovenco_typo_menu',
                 array(
-                    'label'       => esc_html__( 'Menu Typography', 'onepress-plus' ),
-                    'description' => esc_html__( 'Select how you want your Menu to appear.', 'onepress-plus' ),
-                    'section'       => 'onepress_typo_menu_section',
-                    'css_selector'       => '.onepress-menu a', // css selector for live view
+                    'label'       => esc_html__( 'Menu Typography', 'sovenco-plus' ),
+                    'description' => esc_html__( 'Select how you want your Menu to appear.', 'sovenco-plus' ),
+                    'section'       => 'sovenco_typo_menu_section',
+                    'css_selector'       => '.sovenco-menu a', // css selector for live view
                     'fields' => array(
                         'font-family'     => '',
                         //'color'           => '',
@@ -721,30 +721,30 @@ class OnePress_PLus {
 
         // For Heading
         $wp_customize->add_section(
-            'onepress_typo_heading_section',
+            'sovenco_typo_heading_section',
             array(
-                'panel'=> 'onepress_typo',
-                'title' => esc_html__( 'Heading', 'onepress-plus' ), 'priority' => 5, )
+                'panel'=> 'sovenco_typo',
+                'title' => esc_html__( 'Heading', 'sovenco-plus' ), 'priority' => 5, )
         );
 
         // Add the menu typography settings.
         // @todo Better sanitize_callback functions.
         $wp_customize->add_setting(
-            'onepress_typo_heading',
+            'sovenco_typo_heading',
             array(
-                'sanitize_callback' => 'onepress_sanitize_typography_field',
+                'sanitize_callback' => 'sovenco_sanitize_typography_field',
                 'transport' => 'postMessage'
             )
         );
 
         $wp_customize->add_control(
-            new OnePress_Customize_Typography_Control(
+            new sovenco_Customize_Typography_Control(
                 $wp_customize,
-                'onepress_typo_heading',
+                'sovenco_typo_heading',
                 array(
-                    'label'       => esc_html__( 'Heading Typography', 'onepress-plus' ),
-                    'description' => esc_html__( 'Select how you want your Heading to appear.', 'onepress-plus' ),
-                    'section'       => 'onepress_typo_heading_section',
+                    'label'       => esc_html__( 'Heading Typography', 'sovenco-plus' ),
+                    'description' => esc_html__( 'Select how you want your Heading to appear.', 'sovenco-plus' ),
+                    'section'       => 'sovenco_typo_heading_section',
                     'css_selector'       => 'body h1, body h2, body h3, body h4, body h5, body h6', // css selector for live view
                     'fields' => array(
                         'font-family'     => '',
@@ -764,68 +764,68 @@ class OnePress_PLus {
 
         // Team member settings
         // Remove theme team
-        $wp_customize->remove_setting( 'onepress_team_members' );
-        $wp_customize->remove_control( 'onepress_team_members' );
+        $wp_customize->remove_setting( 'sovenco_team_members' );
+        $wp_customize->remove_control( 'sovenco_team_members' );
 
 
         $wp_customize->add_setting(
-            'onepress_team_members',
+            'sovenco_team_members',
             array(
-                'sanitize_callback' => 'onepress_sanitize_repeatable_data_field',
+                'sanitize_callback' => 'sovenco_sanitize_repeatable_data_field',
                 'transport' => 'refresh', // refresh or postMessage
             ) );
 
 
         $wp_customize->add_control(
-            new Onepress_Customize_Repeatable_Control(
+            new sovenco_Customize_Repeatable_Control(
                 $wp_customize,
-                'onepress_team_members',
+                'sovenco_team_members',
                 array(
-                    'label'     => esc_html__('Team members', 'onepress-plus'),
+                    'label'     => esc_html__('Team members', 'sovenco-plus'),
                     'description'   => '',
-                    'section'       => 'onepress_team_content',
+                    'section'       => 'sovenco_team_content',
                     //'live_title_id' => 'user_id', // apply for unput text and textarea only
-                    'title_format'  => esc_html__( '[live_title]', 'onepress-plus'), // [live_title]
+                    'title_format'  => esc_html__( '[live_title]', 'sovenco-plus'), // [live_title]
                     'max_item'      => 4, // Maximum item can add
                     'fields'    => array(
                         'user_id' => array(
-                            'title' => esc_html__('User media', 'onepress-plus'),
+                            'title' => esc_html__('User media', 'sovenco-plus'),
                             'type'  =>'media',
                             'desc'  => '',
                         ),
                         'link' => array(
-                            'title' => esc_html__('Custom Link', 'onepress-plus'),
+                            'title' => esc_html__('Custom Link', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
 
                         'url' => array(
-                            'title' => esc_html__('Website', 'onepress-plus'),
+                            'title' => esc_html__('Website', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
                         'facebook' => array(
-                            'title' => esc_html__('Facebook', 'onepress-plus'),
+                            'title' => esc_html__('Facebook', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
                         'twitter' => array(
-                            'title' => esc_html__('Twitter', 'onepress-plus'),
+                            'title' => esc_html__('Twitter', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
                         'google_plus' => array(
-                            'title' => esc_html__('Google+', 'onepress-plus'),
+                            'title' => esc_html__('Google+', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
                         'linkedin' => array(
-                            'title' => esc_html__('linkedin', 'onepress-plus'),
+                            'title' => esc_html__('linkedin', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
                         'email' => array(
-                            'title' => esc_html__('Email', 'onepress-plus'),
+                            'title' => esc_html__('Email', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
@@ -839,226 +839,226 @@ class OnePress_PLus {
 
 
         // Order and styling
-        $wp_customize->add_section( 'onepress_section_order' ,
+        $wp_customize->add_section( 'sovenco_section_order' ,
             array(
                 'priority'    => 125,
-                'title'       => esc_html__( 'Section Order & Styling', 'onepress-plus' ),
+                'title'       => esc_html__( 'Section Order & Styling', 'sovenco-plus' ),
                 'description' => '',
-                'active_callback' => ( function_exists( 'onepress_showon_frontpage' ) ) ? 'onepress_showon_frontpage' : false
+                'active_callback' => ( function_exists( 'sovenco_showon_frontpage' ) ) ? 'sovenco_showon_frontpage' : false
             )
         );
-       // remove_theme_mod( 'onepress_section_order_styling' );
+       // remove_theme_mod( 'sovenco_section_order_styling' );
 
         // Hero section
         // Video MP4
-        $wp_customize->add_setting( 'onepress_hero_video_mp4',
+        $wp_customize->add_setting( 'sovenco_hero_video_mp4',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
                 'transport' => 'refresh', // refresh or postMessage
             )
         );
         $wp_customize->add_control( new WP_Customize_Media_Control(
                 $wp_customize,
-                'onepress_hero_video_mp4',
+                'sovenco_hero_video_mp4',
                 array(
-                    'label' 		=> esc_html__('Background Video (.MP4)', 'onepress-plus'),
-                    'section' 		=> 'onepress_hero_images',
+                    'label' 		=> esc_html__('Background Video (.MP4)', 'sovenco-plus'),
+                    'section' 		=> 'sovenco_hero_images',
                     'priority'      => 100,
                 )
             )
         );
         // Video webm
-        $wp_customize->add_setting( 'onepress_hero_video_webm',
+        $wp_customize->add_setting( 'sovenco_hero_video_webm',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
                 'transport' => 'refresh', // refresh or postMessage
             )
         );
         $wp_customize->add_control( new WP_Customize_Media_Control(
                 $wp_customize,
-                'onepress_hero_video_webm',
+                'sovenco_hero_video_webm',
                 array(
-                    'label' 		=> esc_html__('Background Video(.WEBM)', 'onepress-plus'),
-                    'section' 		=> 'onepress_hero_images',
+                    'label' 		=> esc_html__('Background Video(.WEBM)', 'sovenco-plus'),
+                    'section' 		=> 'sovenco_hero_images',
                     'priority'      => 105,
                 )
             )
         );
         // Video OGV
-        $wp_customize->add_setting( 'onepress_hero_video_ogv',
+        $wp_customize->add_setting( 'sovenco_hero_video_ogv',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
                 'transport' => 'refresh', // refresh or postMessage
             )
         );
         $wp_customize->add_control( new WP_Customize_Media_Control(
                 $wp_customize,
-                'onepress_hero_video_ogv',
+                'sovenco_hero_video_ogv',
                 array(
-                    'label' 		=> esc_html__('Background Video(.OGV)', 'onepress-plus'),
-                    'section' 		=> 'onepress_hero_images',
+                    'label' 		=> esc_html__('Background Video(.OGV)', 'sovenco-plus'),
+                    'section' 		=> 'sovenco_hero_images',
                     'priority'      => 110,
                 )
             )
         );
         // Hero mobile video fallback
-        $wp_customize->add_setting( 'onepress_hero_mobile_img',
+        $wp_customize->add_setting( 'sovenco_hero_mobile_img',
             array(
-                'sanitize_callback' => 'onepress_sanitize_checkbox',
+                'sanitize_callback' => 'sovenco_sanitize_checkbox',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_hero_mobile_img',
+        $wp_customize->add_control( 'sovenco_hero_mobile_img',
             array(
                 'type'        => 'checkbox',
                 'priority'      => 115,
-                'label'       => esc_html__('On mobile replace video with first background image.', 'onepress-plus'),
-                'section'     => 'onepress_hero_images',
+                'label'       => esc_html__('On mobile replace video with first background image.', 'sovenco-plus'),
+                'section'     => 'sovenco_hero_images',
             )
         );
 
         // END Hero section
 
         $wp_customize->add_setting(
-            'onepress_section_order_styling',
+            'sovenco_section_order_styling',
             array(
                 //'default' => json_encode( $this->get_default_sections_settings() ),
-                'sanitize_callback' => 'onepress_sanitize_repeatable_data_field',
+                'sanitize_callback' => 'sovenco_sanitize_repeatable_data_field',
                 'transport' => 'refresh', // refresh or postMessage
             ) );
 
         $wp_customize->add_control(
-            new Onepress_Customize_Repeatable_Control(
+            new sovenco_Customize_Repeatable_Control(
                 $wp_customize,
-                'onepress_section_order_styling',
+                'sovenco_section_order_styling',
                 array(
-                    'label' 		=> esc_html__('Section Order & Styling', 'onepress-plus'),
+                    'label' 		=> esc_html__('Section Order & Styling', 'sovenco-plus'),
                     'description'   => '',
-                    'section'       => 'onepress_section_order',
+                    'section'       => 'sovenco_section_order',
                     'live_title_id' => 'title', // apply for unput text and textarea only
-                    'title_format'  => esc_html__('[Custom Section]: [live_title]', 'onepress-plus'), // [live_title]
+                    'title_format'  => esc_html__('[Custom Section]: [live_title]', 'sovenco-plus'), // [live_title]
                     'changeable'    => 'no', // Can Remove, add new button  default yes
                     'defined_values'   => $this->get_default_sections_settings(),
                     'id_key'    => 'section_id',
-                    'default_empty_title'  => esc_html__('Untitled', 'onepress-plus'), // [live_title]
+                    'default_empty_title'  => esc_html__('Untitled', 'sovenco-plus'), // [live_title]
                     'fields'    => array(
                         'add_by' => array(
                             'type'  =>'add_by',
                         ),
                         'title' => array(
-                            'title' => esc_html__('Title', 'onepress-plus'),
+                            'title' => esc_html__('Title', 'sovenco-plus'),
                             'type'  =>'hidden',
                             'desc'  => ''
                         ),
                         'section_id' => array(
-                            'title' => esc_html__('Section ID', 'onepress-plus'),
+                            'title' => esc_html__('Section ID', 'sovenco-plus'),
                             'type'  =>'hidden',
                             'desc'  => ''
                         ),
                         'show_section' => array(
-                            'title' => esc_html__('Show this section', 'onepress-plus'),
+                            'title' => esc_html__('Show this section', 'sovenco-plus'),
                             'type'  =>'checkbox',
                             'default'  =>'1',
                         ),
                         'section_inverse' => array(
-                            'title' => esc_html__('Inverted Style', 'onepress-plus'),
-                            'desc'  => esc_html__('Make this section darker', 'onepress-plus'),
+                            'title' => esc_html__('Inverted Style', 'sovenco-plus'),
+                            'desc'  => esc_html__('Make this section darker', 'sovenco-plus'),
                             'type'  =>'checkbox',
                         ),
                         'hide_title' => array(
-                            'title' => esc_html__('Hide section title', 'onepress-plus'),
+                            'title' => esc_html__('Hide section title', 'sovenco-plus'),
                             'type'  =>'checkbox',
                             'desc'  => '',
                             'required' => array( 'add_by', '=', 'click' ) ,
                         ),
                         'subtitle' => array(
-                            'title' => esc_html__('Subtitle', 'onepress-plus'),
+                            'title' => esc_html__('Subtitle', 'sovenco-plus'),
                             'type'  =>'text',
                             'required' => array( 'add_by', '=', 'click' ) ,
                         ),
                         'desc' => array(
-                            'title' => esc_html__('Section Description', 'onepress-plus'),
+                            'title' => esc_html__('Section Description', 'sovenco-plus'),
                             'type'  =>'editor',
                             'required' => array( 'add_by', '=', 'click' ) ,
                         ),
                         'content' => array(
-                            'title' => esc_html__('Section Content', 'onepress-plus'),
+                            'title' => esc_html__('Section Content', 'sovenco-plus'),
                             'type'  =>'editor',
                             'required' => array( 'add_by', '=', 'click' ) ,
                         ),
                         'bg_type' => array(
-                            'title' => esc_html__('Background Type', 'onepress-plus'),
+                            'title' => esc_html__('Background Type', 'sovenco-plus'),
                             'type'  =>'select',
                             'options'  => array(
-                                'color' => esc_html__('Color', 'onepress-plus'),
-                                'image' => esc_html__('Image', 'onepress-plus'),
-                                'video' => esc_html__('Video', 'onepress-plus'),
+                                'color' => esc_html__('Color', 'sovenco-plus'),
+                                'image' => esc_html__('Image', 'sovenco-plus'),
+                                'video' => esc_html__('Video', 'sovenco-plus'),
                             ),
                         ),
                         'bg_color' => array(
-                            'title' => esc_html__('Background Color', 'onepress-plus'),
+                            'title' => esc_html__('Background Color', 'sovenco-plus'),
                             'type'  =>'coloralpha',
                             'required' => array( 'bg_type', '=', 'color' ) ,
                         ),
                         'bg_image' => array(
-                            'title' => esc_html__('Background Image', 'onepress-plus'),
+                            'title' => esc_html__('Background Image', 'sovenco-plus'),
                             'type'  =>'media',
                             'required' => array( 'bg_type', 'in', array( 'video', 'image' ) ) ,
                         ),
                         'enable_parallax' => array(
-                            'title' => esc_html__('Enable Parallax', 'onepress-plus'),
-                            'desc'  => esc_html__('Required background image and Inverted Style is checked', 'onepress-plus'),
+                            'title' => esc_html__('Enable Parallax', 'sovenco-plus'),
+                            'desc'  => esc_html__('Required background image and Inverted Style is checked', 'sovenco-plus'),
                             'type'  =>'checkbox',
                             'required' => array( 'bg_type', '=', 'image' ) ,
                         ),
                         'bg_video' => array(
-                            'title' => esc_html__('Background video(.MP4)', 'onepress-plus'),
+                            'title' => esc_html__('Background video(.MP4)', 'sovenco-plus'),
                             'type'  =>'media',
                             'media'  =>'video',
                             'required' => array( 'bg_type', '=', 'video' ) ,
-                            //'desc' => esc_html__('Select your video background', 'onepress-plus'),
+                            //'desc' => esc_html__('Select your video background', 'sovenco-plus'),
                         ),
                         'bg_video_webm' => array(
-                            'title' => esc_html__('Background video(.WEBM)', 'onepress-plus'),
+                            'title' => esc_html__('Background video(.WEBM)', 'sovenco-plus'),
                             'type'  =>'media',
                             'media'  =>'video',
                             'required' => array( 'bg_type', '=', 'video' ) ,
-                            //'desc' => esc_html__('Select your video background', 'onepress-plus'),
+                            //'desc' => esc_html__('Select your video background', 'sovenco-plus'),
                         ),
                         'bg_video_ogv' => array(
-                            'title' => esc_html__('Background video(.OGV)', 'onepress-plus'),
+                            'title' => esc_html__('Background video(.OGV)', 'sovenco-plus'),
                             'type'  =>'media',
                             'media'  =>'video',
                             'required' => array( 'bg_type', '=', 'video' ) ,
-                            //'desc' => esc_html__('Select your video background', 'onepress-plus'),
+                            //'desc' => esc_html__('Select your video background', 'sovenco-plus'),
                         ),
 
                         'bg_opacity_color' => array(
-                            'title' => esc_html__('Overlay Color', 'onepress-plus'),
+                            'title' => esc_html__('Overlay Color', 'sovenco-plus'),
                             'type'  =>'coloralpha',
                             'required' => array( 'bg_type', 'in', array( 'video', 'image' ) ) ,
                         ),
 
                         /*
                         'bg_opacity' => array(
-                            'title' => esc_html__('Overlay Color Opacity', 'onepress-plus'),
+                            'title' => esc_html__('Overlay Color Opacity', 'sovenco-plus'),
                             'type'  =>'text',
-                            'desc' => esc_html__('Enter a float number between 0.1 to 0.9', 'onepress-plus'),
+                            'desc' => esc_html__('Enter a float number between 0.1 to 0.9', 'sovenco-plus'),
                         ),
                         */
 
                         'padding_top' => array(
-                            'title' => esc_html__('Section Padding Top', 'onepress-plus'),
+                            'title' => esc_html__('Section Padding Top', 'sovenco-plus'),
                             'type'  =>'text',
-                            'desc' => esc_html__('Eg. 50px, 30%, leave empty for default value', 'onepress-plus'),
+                            'desc' => esc_html__('Eg. 50px, 30%, leave empty for default value', 'sovenco-plus'),
                         ),
                         'padding_bottom' => array(
-                            'title' => esc_html__('Section Padding Bottom', 'onepress-plus'),
+                            'title' => esc_html__('Section Padding Bottom', 'sovenco-plus'),
                             'type'  =>'text',
-                            'desc' => esc_html__('Eg. 50px, 30%, leave empty for default value', 'onepress-plus'),
+                            'desc' => esc_html__('Eg. 50px, 30%, leave empty for default value', 'sovenco-plus'),
                         ),
 
                     ),
@@ -1069,216 +1069,216 @@ class OnePress_PLus {
         /*------------------------------------------------------------------------*/
         /*  Section: Testimonials
         /*------------------------------------------------------------------------*/
-        $wp_customize->add_panel( 'onepress_testimonial' ,
+        $wp_customize->add_panel( 'sovenco_testimonial' ,
             array(
                 'priority'        => 220,
-                'title'           => esc_html__( 'Section: Testimonial', 'onepress-plus' ),
+                'title'           => esc_html__( 'Section: Testimonial', 'sovenco-plus' ),
                 'description'     => '',
-                'active_callback' => 'onepress_showon_frontpage'
+                'active_callback' => 'sovenco_showon_frontpage'
             )
         );
 
-        $wp_customize->add_section( 'onepress_testimonial_settings' ,
+        $wp_customize->add_section( 'sovenco_testimonial_settings' ,
             array(
                 'priority'    => 3,
-                'title'       => esc_html__( 'Section Settings', 'onepress-plus' ),
+                'title'       => esc_html__( 'Section Settings', 'sovenco-plus' ),
                 'description' => '',
-                'panel'       => 'onepress_testimonial',
+                'panel'       => 'sovenco_testimonial',
             )
         );
         // Show Content
         /*
-        $wp_customize->add_setting( 'onepress_testimonials_disable',
+        $wp_customize->add_setting( 'sovenco_testimonials_disable',
             array(
-                'sanitize_callback' => 'onepress_sanitize_checkbox',
+                'sanitize_callback' => 'sovenco_sanitize_checkbox',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_testimonials_disable',
+        $wp_customize->add_control( 'sovenco_testimonials_disable',
             array(
                 'type'        => 'checkbox',
-                'label'       => esc_html__('Hide this section?', 'onepress-plus'),
-                'section'     => 'onepress_testimonial_settings',
-                'description' => esc_html__('Check this box to hide this section.', 'onepress-plus'),
+                'label'       => esc_html__('Hide this section?', 'sovenco-plus'),
+                'section'     => 'sovenco_testimonial_settings',
+                'description' => esc_html__('Check this box to hide this section.', 'sovenco-plus'),
             )
         );
         */
 
         // Section ID
-        $wp_customize->add_setting( 'onepress_testimonial_id',
+        $wp_customize->add_setting( 'sovenco_testimonial_id',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
-                'default'           => esc_html__('testimonials', 'onepress-plus'),
+                'sanitize_callback' => 'sovenco_sanitize_text',
+                'default'           => esc_html__('testimonials', 'sovenco-plus'),
             )
         );
-        $wp_customize->add_control( 'onepress_testimonial_id',
+        $wp_customize->add_control( 'sovenco_testimonial_id',
             array(
-                'label'     => esc_html__('Section ID:', 'onepress-plus'),
-                'section' 		=> 'onepress_testimonial_settings',
-                'description'   => esc_html__( 'The section id, we will use this for link anchor.', 'onepress-plus' ),
+                'label'     => esc_html__('Section ID:', 'sovenco-plus'),
+                'section' 		=> 'sovenco_testimonial_settings',
+                'description'   => esc_html__( 'The section id, we will use this for link anchor.', 'sovenco-plus' ),
             )
         );
 
         // Title
-        $wp_customize->add_setting( 'onepress_testimonial_title',
+        $wp_customize->add_setting( 'sovenco_testimonial_title',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => esc_html__('Testimonials', 'onepress-plus'),
+                'default'           => esc_html__('Testimonials', 'sovenco-plus'),
             )
         );
-        $wp_customize->add_control( 'onepress_testimonial_title',
+        $wp_customize->add_control( 'sovenco_testimonial_title',
             array(
-                'label'     => esc_html__('Section Title', 'onepress-plus'),
-                'section' 		=> 'onepress_testimonial_settings',
+                'label'     => esc_html__('Section Title', 'sovenco-plus'),
+                'section' 		=> 'sovenco_testimonial_settings',
                 'description'   => '',
             )
         );
 
         // Sub Title
-        $wp_customize->add_setting( 'onepress_testimonial_subtitle',
+        $wp_customize->add_setting( 'sovenco_testimonial_subtitle',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => esc_html__('Section subtitle', 'onepress-plus'),
+                'default'           => esc_html__('Section subtitle', 'sovenco-plus'),
             )
         );
-        $wp_customize->add_control( 'onepress_testimonial_subtitle',
+        $wp_customize->add_control( 'sovenco_testimonial_subtitle',
             array(
-                'label'     => esc_html__('Section Subtitle', 'onepress-plus'),
-                'section' 		=> 'onepress_testimonial_settings',
+                'label'     => esc_html__('Section Subtitle', 'sovenco-plus'),
+                'section' 		=> 'sovenco_testimonial_settings',
                 'description'   => '',
             )
         );
 
         // Description
-        $wp_customize->add_setting( 'onepress_testimonial_desc',
+        $wp_customize->add_setting( 'sovenco_testimonial_desc',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_testimonial_desc',
+            'sovenco_testimonial_desc',
             array(
-                'label' 		=> esc_html__('Section Description', 'onepress-plus'),
-                'section' 		=> 'onepress_testimonial_settings',
+                'label' 		=> esc_html__('Section Description', 'sovenco-plus'),
+                'section' 		=> 'sovenco_testimonial_settings',
                 'description'   => '',
             )
         ));
 
         // Testimonials content
-        $wp_customize->add_section( 'onepress_testimonials_content' ,
+        $wp_customize->add_section( 'sovenco_testimonials_content' ,
             array(
                 'priority'    => 3,
-                'title'       => esc_html__( 'Section Content', 'onepress-plus' ),
+                'title'       => esc_html__( 'Section Content', 'sovenco-plus' ),
                 'description' => '',
-                'panel'       => 'onepress_testimonial',
+                'panel'       => 'sovenco_testimonial',
             )
         );
         $wp_customize->add_setting(
-            'onepress_testimonial_boxes',
+            'sovenco_testimonial_boxes',
             array(
                 'default' => json_encode(
                     array(
                         array(
-                            'title' 		=> esc_html__( 'Praesent placerat', 'onepress-plus' ),
-                            'name' 			=> esc_html__( 'Alexander Rios', 'onepress-plus' ),
-                            'subtitle' 		=> esc_html__( 'Founder & CEO', 'onepress-plus' ),
+                            'title' 		=> esc_html__( 'Praesent placerat', 'sovenco-plus' ),
+                            'name' 			=> esc_html__( 'Alexander Rios', 'sovenco-plus' ),
+                            'subtitle' 		=> esc_html__( 'Founder & CEO', 'sovenco-plus' ),
                             'style'         => 'warning',
                             'image' 		=> array(
                                 'url' => get_template_directory_uri() . '/assets/images/testimonial_1.jpg',
                                 'id'  => ''
                             ),
-                            'content' 		=> esc_html__( 'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.', 'onepress-plus' ),
+                            'content' 		=> esc_html__( 'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.', 'sovenco-plus' ),
 
                         ),
                         array(
-                            'title' 		=> esc_html__( 'Cras iaculis', 'onepress-plus' ),
-                            'name' 			=> esc_html__( 'Alexander Max', 'onepress-plus' ),
-                            'subtitle' 		=> esc_html__( 'Founder & CEO', 'onepress-plus' ),
+                            'title' 		=> esc_html__( 'Cras iaculis', 'sovenco-plus' ),
+                            'name' 			=> esc_html__( 'Alexander Max', 'sovenco-plus' ),
+                            'subtitle' 		=> esc_html__( 'Founder & CEO', 'sovenco-plus' ),
                             'style'         => 'success',
                             'image' 		=> array(
                                 'url' => get_template_directory_uri() . '/assets/images/testimonial_2.jpg',
                                 'id'  => ''
                             ),
-                            'content' 		=> esc_html__( 'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue eu vulputate.', 'onepress-plus' ),
+                            'content' 		=> esc_html__( 'Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue eu vulputate.', 'sovenco-plus' ),
 
                         ),
                         array(
-                            'title' 		=> esc_html__( 'Fusce lobortis', 'onepress-plus' ),
-                            'name' 			=> esc_html__( 'Peter Mendez', 'onepress-plus' ),
-                            'subtitle' 		=> esc_html__( 'Example Company', 'onepress-plus' ),
+                            'title' 		=> esc_html__( 'Fusce lobortis', 'sovenco-plus' ),
+                            'name' 			=> esc_html__( 'Peter Mendez', 'sovenco-plus' ),
+                            'subtitle' 		=> esc_html__( 'Example Company', 'sovenco-plus' ),
                             'style'         => 'theme-primary',
                             'image' 		=> array(
                                 'url' => get_template_directory_uri() . '/assets/images/testimonial_3.jpg',
                                 'id'  => ''
                             ),
-                            'content' 		=> esc_html__( 'Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna egestas sem.', 'onepress-plus' ),
+                            'content' 		=> esc_html__( 'Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna egestas sem.', 'sovenco-plus' ),
                         ),
 
                     )
                 ),
-                'sanitize_callback' => 'onepress_sanitize_repeatable_data_field',
+                'sanitize_callback' => 'sovenco_sanitize_repeatable_data_field',
                 'transport' => 'refresh', // refresh or postMessage
             ) );
 
         $wp_customize->add_control(
-            new Onepress_Customize_Repeatable_Control(
+            new sovenco_Customize_Repeatable_Control(
                 $wp_customize,
-                'onepress_testimonial_boxes',
+                'sovenco_testimonial_boxes',
                 array(
-                    'label'     => esc_html__('Testimonial', 'onepress-plus'),
+                    'label'     => esc_html__('Testimonial', 'sovenco-plus'),
                     'description'   => '',
-                    'section'       => 'onepress_testimonials_content',
+                    'section'       => 'sovenco_testimonials_content',
                     'live_title_id' => 'title', // apply for unput text and textarea only
-                    'title_format'  => esc_html__( '[live_title]', 'onepress-plus'), // [live_title]
+                    'title_format'  => esc_html__( '[live_title]', 'sovenco-plus'), // [live_title]
                     'max_item'      => 3, // Maximum item can add
 
                     'fields'    => array(
                         'title' => array(
-                            'title' => esc_html__('Title', 'onepress-plus'),
+                            'title' => esc_html__('Title', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
-                            'default'  => esc_html__('Testimonial title', 'onepress-plus'),
+                            'default'  => esc_html__('Testimonial title', 'sovenco-plus'),
                         ),
                         'name' => array(
-                            'title' => esc_html__('Name', 'onepress-plus'),
+                            'title' => esc_html__('Name', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
-                            'default'  => esc_html__('User name', 'onepress-plus'),
+                            'default'  => esc_html__('User name', 'sovenco-plus'),
                         ),
                         'image' => array(
-                            'title' => esc_html__('Avatar', 'onepress-plus'),
+                            'title' => esc_html__('Avatar', 'sovenco-plus'),
                             'type'  =>'media',
-                            'desc'  => esc_html__( 'Suggestion: 100x100px square image.', 'onepress-plus' ),
+                            'desc'  => esc_html__( 'Suggestion: 100x100px square image.', 'sovenco-plus' ),
                             'default' => array(
                                 'url' => get_template_directory_uri().'/assets/images/testimonial_1.jpg',
                                 'id' => ''
                             )
                         ),
                         'subtitle' => array(
-                            'title' => esc_html__('Subtitle', 'onepress-plus'),
+                            'title' => esc_html__('Subtitle', 'sovenco-plus'),
                             'type'  =>'textarea',
-                            'default'  => esc_html__('Example Company', 'onepress-plus'),
+                            'default'  => esc_html__('Example Company', 'sovenco-plus'),
                         ),
                         'content' => array(
-                            'title' => esc_html__('Content', 'onepress-plus'),
+                            'title' => esc_html__('Content', 'sovenco-plus'),
                             'type'  =>'textarea',
-                            'default'  => esc_html__('Whatever your user say', 'onepress-plus'),
+                            'default'  => esc_html__('Whatever your user say', 'sovenco-plus'),
                         ),
 
                         'style' => array(
-                            'title' => esc_html__('Style', 'onepress-plus'),
+                            'title' => esc_html__('Style', 'sovenco-plus'),
                             'type'  =>'select',
                             'default'  => 'light',
                             'options' => array(
-                                'theme-primary' => esc_html__( 'Theme default', 'onepress-plus' ),
-                                'light' => esc_html__( 'Light', 'onepress-plus' ),
-                                'primary' => esc_html__( 'Primary', 'onepress-plus' ),
-                                'success' => esc_html__( 'Success', 'onepress-plus' ),
-                                'info' => esc_html__( 'Info', 'onepress-plus' ),
-                                'warning' => esc_html__( 'Warning', 'onepress-plus' ),
-                                'danger' => esc_html__( 'Danger', 'onepress-plus' ),
+                                'theme-primary' => esc_html__( 'Theme default', 'sovenco-plus' ),
+                                'light' => esc_html__( 'Light', 'sovenco-plus' ),
+                                'primary' => esc_html__( 'Primary', 'sovenco-plus' ),
+                                'success' => esc_html__( 'Success', 'sovenco-plus' ),
+                                'info' => esc_html__( 'Info', 'sovenco-plus' ),
+                                'warning' => esc_html__( 'Warning', 'sovenco-plus' ),
+                                'danger' => esc_html__( 'Danger', 'sovenco-plus' ),
                             )
                         ),
 
@@ -1293,185 +1293,185 @@ class OnePress_PLus {
         /*------------------------------------------------------------------------*/
         /*  Section: Map
         /*------------------------------------------------------------------------*/
-        $wp_customize->add_panel( 'onepress_map' ,
+        $wp_customize->add_panel( 'sovenco_map' ,
             array(
                 'priority'        => 280,
-                'title'           => __( 'Section: Map', 'onepress-plus' ),
+                'title'           => __( 'Section: Map', 'sovenco-plus' ),
                 'description'     => '',
-                'active_callback' => 'onepress_showon_frontpage'
+                'active_callback' => 'sovenco_showon_frontpage'
             )
         );
 
-        $wp_customize->add_section( 'onepress_map_settings' ,
+        $wp_customize->add_section( 'sovenco_map_settings' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Settings', 'onepress-plus' ),
-                'panel'       => 'onepress_map',
+                'title'       => __( 'Section Settings', 'sovenco-plus' ),
+                'panel'       => 'sovenco_map',
             )
         );
 
         // Section ID
-        $wp_customize->add_setting( 'onepress_map_id',
+        $wp_customize->add_setting( 'sovenco_map_id',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'map',
             )
         );
 
-        $wp_customize->add_control( 'onepress_map_id',
+        $wp_customize->add_control( 'sovenco_map_id',
             array(
-                'label' 		=> __('Section ID', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
+                'label' 		=> __('Section ID', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
                 'description'   => '',
             )
         );
 
         // Map api key code
-        $wp_customize->add_setting( 'onepress_map_api_key',
+        $wp_customize->add_setting( 'sovenco_map_api_key',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_map_api_key',
+        $wp_customize->add_control( 'sovenco_map_api_key',
             array(
-                'label'       => __('Google map api key', 'onepress-plus'),
-                'section'     => 'onepress_map_settings',
-                'description' => __('In order to show the Google Maps section, you must enter a validate Google Maps API key, you can get one <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">here</a>.', 'onepress-plus'),
+                'label'       => __('Google map api key', 'sovenco-plus'),
+                'section'     => 'sovenco_map_settings',
+                'description' => __('In order to show the Google Maps section, you must enter a validate Google Maps API key, you can get one <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">here</a>.', 'sovenco-plus'),
             )
         );
 
         // Latitude
-        $wp_customize->add_setting( 'onepress_map_lat',
+        $wp_customize->add_setting( 'sovenco_map_lat',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '37.3317115',
             )
         );
 
-        $wp_customize->add_control( 'onepress_map_lat',
+        $wp_customize->add_control( 'sovenco_map_lat',
             array(
-                'label' 		=> __('Latitude', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
+                'label' 		=> __('Latitude', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
                 'description'   => '',
             )
         );
 
         // Longitude
-        $wp_customize->add_setting( 'onepress_map_long',
+        $wp_customize->add_setting( 'sovenco_map_long',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '-122.0301835',
             )
         );
-        $wp_customize->add_control( 'onepress_map_long',
+        $wp_customize->add_control( 'sovenco_map_long',
             array(
-                'label' 		=> __('Longitude', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
+                'label' 		=> __('Longitude', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
             )
         );
 
-        // OnePress_Misc_Control
+        // sovenco_Misc_Control
 
-        $wp_customize->add_setting( 'onepress_map_message',
+        $wp_customize->add_setting( 'sovenco_map_message',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
         $wp_customize->add_control(
-            new OnePress_Misc_Control(
+            new sovenco_Misc_Control(
                 $wp_customize,
-                'onepress_map_message',
+                'sovenco_map_message',
                 array(
-                    'label' 		=> __('Longitude', 'onepress-plus'),
+                    'label' 		=> __('Longitude', 'sovenco-plus'),
                     'type'          => 'custom_message',
-                    'section' 		=> 'onepress_map_settings',
-                    'description'   => sprintf( __( 'Find your Latitude, Longitude <a target="_blank" href="%1$s">Here</a>', 'onepress-plus' ), 'http://www.mapcoordinates.net/en' ),
+                    'section' 		=> 'sovenco_map_settings',
+                    'description'   => sprintf( __( 'Find your Latitude, Longitude <a target="_blank" href="%1$s">Here</a>', 'sovenco-plus' ), 'http://www.mapcoordinates.net/en' ),
                 )
             )
         );
 
         // Address
-        $wp_customize->add_setting( 'onepress_map_address',
+        $wp_customize->add_setting( 'sovenco_map_address',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
-                'default'           => __( '<strong>1 Infinite Loop Cupertino <br/> CA 95014  United States</strong>' , 'onepress-plus' ),
+                'sanitize_callback' => 'sovenco_sanitize_text',
+                'default'           => __( '<strong>1 Infinite Loop Cupertino <br/> CA 95014  United States</strong>' , 'sovenco-plus' ),
             )
         );
 
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_map_address',
+            'sovenco_map_address',
             array(
-                'label' 		=> __('Address', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
+                'label' 		=> __('Address', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
             )
         ));
 
         // Extra Info
-        $wp_customize->add_setting( 'onepress_map_html',
+        $wp_customize->add_setting( 'sovenco_map_html',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
-                'default'           => __('<p>Your address description goes here.</p>', 'onepress-plus'),
+                'sanitize_callback' => 'sovenco_sanitize_text',
+                'default'           => __('<p>Your address description goes here.</p>', 'sovenco-plus'),
             )
         );
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_map_html',
+            'sovenco_map_html',
             array(
-                'label' 		=> __('Extra Info', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
-                'description'   => __('The HTML code that display on info window when you click to marker', 'onepress-plus'),
+                'label' 		=> __('Extra Info', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
+                'description'   => __('The HTML code that display on info window when you click to marker', 'sovenco-plus'),
             )
         ));
 
 
         $wp_customize->add_setting(
-            'onepress_map_items_address',
+            'sovenco_map_items_address',
             array(
                 'default' => '',
-                'sanitize_callback' => 'onepress_sanitize_repeatable_data_field',
+                'sanitize_callback' => 'sovenco_sanitize_repeatable_data_field',
                 'transport' => 'refresh', // refresh or postMessage
             ) );
 
 
         $wp_customize->add_control(
-            new Onepress_Customize_Repeatable_Control(
+            new sovenco_Customize_Repeatable_Control(
                 $wp_customize,
-                'onepress_map_items_address',
+                'sovenco_map_items_address',
                 array(
-                    'label'     	=> esc_html__('Multiple Address', 'onepress-plus'),
+                    'label'     	=> esc_html__('Multiple Address', 'sovenco-plus'),
                     'description'   => '',
-                    'section'       => 'onepress_map_settings',
+                    'section'       => 'sovenco_map_settings',
                     'live_title_id' => 'address', // apply for unput text and textarea only
-                    'title_format'  => esc_html__('[live_title]', 'onepress-plus'), // [live_title]
+                    'title_format'  => esc_html__('[live_title]', 'sovenco-plus'), // [live_title]
                     'max_item'      => 4, // Maximum item can add
 
                     'fields'    => array(
                         'address' => array(
-                            'title' => esc_html__('Address', 'onepress-plus'),
+                            'title' => esc_html__('Address', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
                         ),
                         'lat' => array(
-                            'title' => esc_html__('Latitude', 'onepress-plus'),
+                            'title' => esc_html__('Latitude', 'sovenco-plus'),
                             'type'  =>'text',
                             'default' => '',
                         ),
                         'long' => array(
-                            'title' => esc_html__('Longitude', 'onepress-plus'),
+                            'title' => esc_html__('Longitude', 'sovenco-plus'),
                             'type'  =>'text',
                             'default' => '',
                         ),
                         'desc' => array(
-                            'title' => esc_html__('Extra info', 'onepress-plus'),
+                            'title' => esc_html__('Extra info', 'sovenco-plus'),
                             'type'  =>'textarea',
                             'default' => '',
                         ),
 
                         'maker' => array(
-                            'title' => esc_html__('Marker', 'onepress-plus'),
+                            'title' => esc_html__('Marker', 'sovenco-plus'),
                             'type'  =>'media',
                             'default' => '',
                         ),
@@ -1489,7 +1489,7 @@ class OnePress_PLus {
 
 
         // Color
-        $wp_customize->add_setting( 'onepress_map_color',
+        $wp_customize->add_setting( 'sovenco_map_color',
             array(
                 'sanitize_callback' => 'sanitize_hex_color',
                 'default'           => '',
@@ -1497,77 +1497,77 @@ class OnePress_PLus {
         );
         $wp_customize->add_control( new WP_Customize_Color_Control(
             $wp_customize,
-            'onepress_map_color',
+            'sovenco_map_color',
             array(
-                'label' 		=> __('Map Color', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
+                'label' 		=> __('Map Color', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
                 'description'   => '',
             )
         ));
 
         // Maker
-        $wp_customize->add_setting( 'onepress_map_maker',
+        $wp_customize->add_setting( 'sovenco_map_maker',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
-                'default'           => ONEPRESS_PLUS_URL.'assets/images/map-marker.png',
+                'sanitize_callback' => 'sovenco_sanitize_text',
+                'default'           => sovenco_PLUS_URL.'assets/images/map-marker.png',
             )
         );
         $wp_customize->add_control( new WP_Customize_Image_Control(
             $wp_customize,
-            'onepress_map_maker',
+            'sovenco_map_maker',
             array(
-                'label' 		=> __('Map Marker', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
-                'description'   => __('Size no larger than 80x80px', 'onepress-plus'),
+                'label' 		=> __('Map Marker', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
+                'description'   => __('Size no larger than 80x80px', 'sovenco-plus'),
             )
         ));
 
 
         // Height
-        $wp_customize->add_setting( 'onepress_map_zoom',
+        $wp_customize->add_setting( 'sovenco_map_zoom',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '10',
             )
         );
 
-        $wp_customize->add_control( 'onepress_map_zoom',
+        $wp_customize->add_control( 'sovenco_map_zoom',
             array(
-                'label' 		=> __('Map Zoom', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
-                'description'   => __('Map Zoom, default 10', 'onepress-plus'),
+                'label' 		=> __('Map Zoom', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
+                'description'   => __('Map Zoom, default 10', 'sovenco-plus'),
             )
         );
 
         // Height
-        $wp_customize->add_setting( 'onepress_map_height',
+        $wp_customize->add_setting( 'sovenco_map_height',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
 
-        $wp_customize->add_control( 'onepress_map_height',
+        $wp_customize->add_control( 'sovenco_map_height',
             array(
-                'label' 		=> __('Map Height', 'onepress-plus'),
-                'section' 		=> 'onepress_map_settings',
+                'label' 		=> __('Map Height', 'sovenco-plus'),
+                'section' 		=> 'sovenco_map_settings',
                 'description'   => '',
             )
         );
 
         // Scroll wheel
-        $wp_customize->add_setting( 'onepress_map_scrollwheel',
+        $wp_customize->add_setting( 'sovenco_map_scrollwheel',
             array(
-                'sanitize_callback' => 'onepress_sanitize_checkbox',
+                'sanitize_callback' => 'sovenco_sanitize_checkbox',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_map_scrollwheel',
+        $wp_customize->add_control( 'sovenco_map_scrollwheel',
             array(
                 'type'        => 'checkbox',
-                'label'       => __('Enable Scrollwheel', 'onepress-plus'),
-                'section'     => 'onepress_map_settings',
-                'description' => esc_html__('Check this box to enable enable mouse scroll wheel.', 'onepress-plus'),
+                'label'       => __('Enable Scrollwheel', 'sovenco-plus'),
+                'section'     => 'sovenco_map_settings',
+                'description' => esc_html__('Check this box to enable enable mouse scroll wheel.', 'sovenco-plus'),
             )
         );
 
@@ -1579,171 +1579,171 @@ class OnePress_PLus {
         /*------------------------------------------------------------------------*/
         /*  Section: Project
         /*------------------------------------------------------------------------*/
-        $wp_customize->add_panel( 'onepress_projects' ,
+        $wp_customize->add_panel( 'sovenco_projects' ,
             array(
                 'priority'        => 200,
-                'title'           => __( 'Section: Projects', 'onepress-plus' ),
+                'title'           => __( 'Section: Projects', 'sovenco-plus' ),
                 'description'     => '',
-                'active_callback' => 'onepress_showon_frontpage'
+                'active_callback' => 'sovenco_showon_frontpage'
             )
         );
 
-        $wp_customize->add_section( 'onepress_projects_settings' ,
+        $wp_customize->add_section( 'sovenco_projects_settings' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Settings', 'onepress-plus' ),
-                'panel'       => 'onepress_projects',
+                'title'       => __( 'Section Settings', 'sovenco-plus' ),
+                'panel'       => 'sovenco_projects',
             )
         );
 
         // Project ID
-        $wp_customize->add_setting( 'onepress_projects_id',
+        $wp_customize->add_setting( 'sovenco_projects_id',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'projects',
             )
         );
-        $wp_customize->add_control( 'onepress_projects_id',
+        $wp_customize->add_control( 'sovenco_projects_id',
             array(
-                'label' 		=> esc_html__('Section ID', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Section ID', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
             )
         );
 
         // Project title
-        $wp_customize->add_setting( 'onepress_projects_title',
+        $wp_customize->add_setting( 'sovenco_projects_title',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => esc_html__( 'Highlight Projects', 'onepress-plus' ),
+                'default'           => esc_html__( 'Highlight Projects', 'sovenco-plus' ),
             )
         );
-        $wp_customize->add_control( 'onepress_projects_title',
+        $wp_customize->add_control( 'sovenco_projects_title',
             array(
-                'label' 		=> esc_html__('Section Title', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Section Title', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
             )
         );
 
         // Project subtitle
-        $wp_customize->add_setting( 'onepress_projects_subtitle',
+        $wp_customize->add_setting( 'sovenco_projects_subtitle',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => esc_html__( 'Some of our works', 'onepress-plus' ),
+                'default'           => esc_html__( 'Some of our works', 'sovenco-plus' ),
             )
         );
-        $wp_customize->add_control( 'onepress_projects_subtitle',
+        $wp_customize->add_control( 'sovenco_projects_subtitle',
             array(
-                'label' 		=> esc_html__('Section subtitle', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Section subtitle', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
             )
         );
 
         // Description
-        $wp_customize->add_setting( 'onepress_projects_desc',
+        $wp_customize->add_setting( 'sovenco_projects_desc',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_projects_desc',
+            'sovenco_projects_desc',
             array(
-                'label' 		=> esc_html__('Section Description', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Section Description', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
             )
         ));
 
         // Number projects to show
-        $wp_customize->add_setting( 'onepress_projects_number',
+        $wp_customize->add_setting( 'sovenco_projects_number',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '6',
             )
         );
-        $wp_customize->add_control( 'onepress_projects_number',
+        $wp_customize->add_control( 'sovenco_projects_number',
             array(
-                'label' 		=> esc_html__('Number projects to show', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Number projects to show', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
             )
         );
 
         // Project order by
-        $wp_customize->add_setting( 'onepress_projects_orderby',
+        $wp_customize->add_setting( 'sovenco_projects_orderby',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'ID',
             )
         );
 
-        $wp_customize->add_control( 'onepress_projects_orderby',
+        $wp_customize->add_control( 'sovenco_projects_orderby',
             array(
-                'label' 		=> esc_html__('Order By', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Order By', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
                 'type'          => 'select',
                 'choices'       => array(
-                    'ID' => __( 'ID', 'onepress-plus' ),
-                    'title' => __( 'Title', 'onepress-plus' ),
-                    'date' => __( 'Date', 'onepress-plus' ),
-                    'rand' => __( 'Random', 'onepress-plus' ),
+                    'ID' => __( 'ID', 'sovenco-plus' ),
+                    'title' => __( 'Title', 'sovenco-plus' ),
+                    'date' => __( 'Date', 'sovenco-plus' ),
+                    'rand' => __( 'Random', 'sovenco-plus' ),
                 ),
             )
         );
 
         // Project order
-        $wp_customize->add_setting( 'onepress_projects_order',
+        $wp_customize->add_setting( 'sovenco_projects_order',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'DESC',
             )
         );
 
-        $wp_customize->add_control( 'onepress_projects_order',
+        $wp_customize->add_control( 'sovenco_projects_order',
             array(
-                'label' 		=> esc_html__('Order', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
+                'label' 		=> esc_html__('Order', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
                 'description'   => '',
                 'type'          => 'select',
                 'choices'       => array(
-                    'DESC' => __( 'Descending', 'onepress-plus' ),
-                    'ASC' => __( 'Ascending', 'onepress-plus' ),
+                    'DESC' => __( 'Descending', 'sovenco-plus' ),
+                    'ASC' => __( 'Ascending', 'sovenco-plus' ),
                 ),
             )
         );
 
         // Project slug
-        $wp_customize->add_setting( 'onepress_project_slug',
+        $wp_customize->add_setting( 'sovenco_project_slug',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'portfolio',
             )
         );
-        $wp_customize->add_control( 'onepress_project_slug',
+        $wp_customize->add_control( 'sovenco_project_slug',
             array(
-                'label' 		=> __('Project slug', 'onepress-plus'),
-                'section' 		=> 'onepress_projects_settings',
-                'description'   => __( 'If you change this option please go to Settings > Permalinks and refresh your permalink structure before your custom post type will show the correct structure.', 'onepress-plus' ),
+                'label' 		=> __('Project slug', 'sovenco-plus'),
+                'section' 		=> 'sovenco_projects_settings',
+                'description'   => __( 'If you change this option please go to Settings > Permalinks and refresh your permalink structure before your custom post type will show the correct structure.', 'sovenco-plus' ),
             )
         );
 
         // Ajax view projects
-        $wp_customize->add_setting( 'onepress_project_ajax',
+        $wp_customize->add_setting( 'sovenco_project_ajax',
             array(
-                'sanitize_callback' => 'onepress_sanitize_checkbox',
+                'sanitize_callback' => 'sovenco_sanitize_checkbox',
                 'default'           => 0,
             )
         );
-        $wp_customize->add_control( 'onepress_project_ajax',
+        $wp_customize->add_control( 'sovenco_project_ajax',
             array(
                 'type'        => 'checkbox',
-                'label'       => esc_html__('Use ajax for load project details', 'onepress-plus'),
-                'section'     => 'onepress_projects_settings',
+                'label'       => esc_html__('Use ajax for load project details', 'sovenco-plus'),
+                'section'     => 'sovenco_projects_settings',
             )
         );
 
@@ -1753,81 +1753,81 @@ class OnePress_PLus {
         /*------------------------------------------------------------------------*/
         /*  Section: Pricing Table
         /*------------------------------------------------------------------------*/
-        $wp_customize->add_panel( 'onepress_pricing' ,
+        $wp_customize->add_panel( 'sovenco_pricing' ,
             array(
                 'priority'        => 230,
-                'title'           => __( 'Section: Pricing', 'onepress-plus' ),
+                'title'           => __( 'Section: Pricing', 'sovenco-plus' ),
                 'description'     => '',
-                'active_callback' => 'onepress_showon_frontpage'
+                'active_callback' => 'sovenco_showon_frontpage'
             )
         );
 
-        $wp_customize->add_section( 'onepress_pricing_settings' ,
+        $wp_customize->add_section( 'sovenco_pricing_settings' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Settings', 'onepress-plus' ),
-                'panel'       => 'onepress_pricing',
+                'title'       => __( 'Section Settings', 'sovenco-plus' ),
+                'panel'       => 'sovenco_pricing',
             )
         );
 
         // Project ID
-        $wp_customize->add_setting( 'onepress_pricing_id',
+        $wp_customize->add_setting( 'sovenco_pricing_id',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'projects',
             )
         );
-        $wp_customize->add_control( 'onepress_pricing_id',
+        $wp_customize->add_control( 'sovenco_pricing_id',
             array(
-                'label' 		=> __('Section ID', 'onepress-plus'),
-                'section' 		=> 'onepress_pricing_settings',
+                'label' 		=> __('Section ID', 'sovenco-plus'),
+                'section' 		=> 'sovenco_pricing_settings',
                 'description'   => '',
             )
         );
 
         // Project title
-        $wp_customize->add_setting( 'onepress_pricing_title',
+        $wp_customize->add_setting( 'sovenco_pricing_title',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => __( 'Pricing Table', 'onepress-plus' ),
+                'default'           => __( 'Pricing Table', 'sovenco-plus' ),
             )
         );
-        $wp_customize->add_control( 'onepress_pricing_title',
+        $wp_customize->add_control( 'sovenco_pricing_title',
             array(
-                'label' 		=> __('Section Title', 'onepress-plus'),
-                'section' 		=> 'onepress_pricing_settings',
+                'label' 		=> __('Section Title', 'sovenco-plus'),
+                'section' 		=> 'sovenco_pricing_settings',
                 'description'   => '',
             )
         );
 
         // Project subtitle
-        $wp_customize->add_setting( 'onepress_pricing_subtitle',
+        $wp_customize->add_setting( 'sovenco_pricing_subtitle',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => __( 'Responsive pricing section', 'onepress-plus' ),
+                'default'           => __( 'Responsive pricing section', 'sovenco-plus' ),
             )
         );
-        $wp_customize->add_control( 'onepress_pricing_subtitle',
+        $wp_customize->add_control( 'sovenco_pricing_subtitle',
             array(
-                'label' 		=> __('Some of our works', 'onepress-plus'),
-                'section' 		=> 'onepress_pricing_settings',
+                'label' 		=> __('Some of our works', 'sovenco-plus'),
+                'section' 		=> 'sovenco_pricing_settings',
                 'description'   => '',
             )
         );
 
         // Description
-        $wp_customize->add_setting( 'onepress_pricing_desc',
+        $wp_customize->add_setting( 'sovenco_pricing_desc',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_pricing_desc',
+            'sovenco_pricing_desc',
             array(
-                'label' 		=> esc_html__('Section Description', 'onepress-plus'),
-                'section' 		=> 'onepress_pricing_settings',
+                'label' 		=> esc_html__('Section Description', 'sovenco-plus'),
+                'section' 		=> 'sovenco_pricing_settings',
                 'description'   => '',
             )
         ));
@@ -1835,120 +1835,120 @@ class OnePress_PLus {
 
 
         // Section content
-        $wp_customize->add_section( 'onepress_pricing_content' ,
+        $wp_customize->add_section( 'sovenco_pricing_content' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Content', 'onepress-plus' ),
-                'panel'       => 'onepress_pricing',
+                'title'       => __( 'Section Content', 'sovenco-plus' ),
+                'panel'       => 'sovenco_pricing',
             )
         );
         $wp_customize->add_setting(
-            'onepress_pricing_plans',
+            'sovenco_pricing_plans',
             array(
                 'default' => json_encode(
                     array(
                         array(
-                            'title' => esc_html__( 'Freelancer', 'onepress-plus' ),
-                            'code'  => esc_html__( '$', 'onepress-plus' ),
+                            'title' => esc_html__( 'Freelancer', 'sovenco-plus' ),
+                            'code'  => esc_html__( '$', 'sovenco-plus' ),
                             'price'  => '9.90',
-                            'subtitle' => esc_html__( 'Perfect for single freelancers who work by themselves', 'onepress-plus' ),
-                            'content' => esc_html__( "Support Forum \nFree hosting\n 1 hour of support\n 40MB of storage space", 'onepress-plus' ),
-                            'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                            'subtitle' => esc_html__( 'Perfect for single freelancers who work by themselves', 'sovenco-plus' ),
+                            'content' => esc_html__( "Support Forum \nFree hosting\n 1 hour of support\n 40MB of storage space", 'sovenco-plus' ),
+                            'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                             'link' => '#',
                             'button' => 'btn-theme-primary',
                         ),
                         array(
-                            'title' => esc_html__( 'Small Business', 'onepress-plus' ),
-                            'code'  => esc_html__( '$', 'onepress-plus' ),
+                            'title' => esc_html__( 'Small Business', 'sovenco-plus' ),
+                            'code'  => esc_html__( '$', 'sovenco-plus' ),
                             'price'  => '29.9',
-                            'subtitle' => esc_html__( 'Suitable for small businesses with up to 5 employees', 'onepress-plus' ),
-                            'content' => esc_html__( "Support Forum \nFree hosting\n 10 hour of support\n 1GB of storage space", 'onepress-plus' ),
-                            'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                            'subtitle' => esc_html__( 'Suitable for small businesses with up to 5 employees', 'sovenco-plus' ),
+                            'content' => esc_html__( "Support Forum \nFree hosting\n 10 hour of support\n 1GB of storage space", 'sovenco-plus' ),
+                            'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                             'link' => '#',
                             'button' => 'btn-success',
                         ),
                         array(
-                            'title' => esc_html__( 'Larger Business', 'onepress-plus' ),
-                            'code'  => esc_html__( '$', 'onepress-plus' ),
+                            'title' => esc_html__( 'Larger Business', 'sovenco-plus' ),
+                            'code'  => esc_html__( '$', 'sovenco-plus' ),
                             'price'  => '59.90',
-                            'subtitle' => esc_html__( 'Great for large businesses with more than 5 employees', 'onepress-plus' ),
-                            'content' => esc_html__( "Support Forum \nFree hosting\n Unlimited hours of support\n Unlimited storage space", 'onepress-plus' ),
-                            'label' => esc_attr__( 'Choose Plan', 'onepress-plus' ),
+                            'subtitle' => esc_html__( 'Great for large businesses with more than 5 employees', 'sovenco-plus' ),
+                            'content' => esc_html__( "Support Forum \nFree hosting\n Unlimited hours of support\n Unlimited storage space", 'sovenco-plus' ),
+                            'label' => esc_attr__( 'Choose Plan', 'sovenco-plus' ),
                             'link' => '#',
                             'button' => 'btn-theme-primary',
                         ),
 
                     )
                 ),
-                'sanitize_callback' => 'onepress_sanitize_repeatable_data_field',
+                'sanitize_callback' => 'sovenco_sanitize_repeatable_data_field',
                 'transport' => 'refresh', // refresh or postMessage
             ) );
 
 
             $wp_customize->add_control(
-                new Onepress_Customize_Repeatable_Control(
+                new sovenco_Customize_Repeatable_Control(
                     $wp_customize,
-                    'onepress_pricing_plans',
+                    'sovenco_pricing_plans',
                     array(
-                        'label'     	=> esc_html__('Pricing Plans', 'onepress-plus'),
+                        'label'     	=> esc_html__('Pricing Plans', 'sovenco-plus'),
                         'description'   => '',
-                        'section'       => 'onepress_pricing_content',
+                        'section'       => 'sovenco_pricing_content',
                         'live_title_id' => 'title', // apply for unput text and textarea only
-                        'title_format'  => esc_html__('[live_title]', 'onepress-plus'), // [live_title]
+                        'title_format'  => esc_html__('[live_title]', 'sovenco-plus'), // [live_title]
                         'max_item'      => 4, // Maximum item can add
 
                         'fields'    => array(
                             'title' => array(
-                                'title' => esc_html__('Title', 'onepress-plus'),
+                                'title' => esc_html__('Title', 'sovenco-plus'),
                                 'type'  =>'text',
                                 'desc'  => '',
-                                'default' => esc_html__( 'Your service title', 'onepress-plus' ),
+                                'default' => esc_html__( 'Your service title', 'sovenco-plus' ),
                             ),
                             'price' => array(
-                                'title' => esc_html__('Price', 'onepress-plus'),
+                                'title' => esc_html__('Price', 'sovenco-plus'),
                                 'type'  =>'text',
-                                'default' => esc_html__( '99', 'onepress-plus' ),
+                                'default' => esc_html__( '99', 'sovenco-plus' ),
                             ),
                             'code' => array(
-                                'title' => esc_html__('Currency code', 'onepress-plus'),
+                                'title' => esc_html__('Currency code', 'sovenco-plus'),
                                 'type'  =>'text',
-                                'default' => esc_html__( '$', 'onepress-plus' ),
+                                'default' => esc_html__( '$', 'sovenco-plus' ),
                             ),
                             'subtitle' => array(
-                                'title' => esc_html__('Subtitle', 'onepress-plus'),
+                                'title' => esc_html__('Subtitle', 'sovenco-plus'),
                                 'type'  =>'text',
                                 'desc'  => '',
-                                'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 'onepress-plus' ),
+                                'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 'sovenco-plus' ),
                             ),
                             'content'  => array(
-                                'title' => esc_html__('Option list', 'onepress-plus'),
-                                'desc'  => esc_html__('Earch option per line', 'onepress-plus'),
+                                'title' => esc_html__('Option list', 'sovenco-plus'),
+                                'desc'  => esc_html__('Earch option per line', 'sovenco-plus'),
                                 'type'  =>'textarea',
-                                'default' => esc_html__( "Option 1\n Option 2\n Option 3\n Option 4", 'onepress-plus' ),
+                                'default' => esc_html__( "Option 1\n Option 2\n Option 3\n Option 4", 'sovenco-plus' ),
                             ),
                             'label' => array(
-                                'title' => esc_html__('Button label', 'onepress-plus'),
+                                'title' => esc_html__('Button label', 'sovenco-plus'),
                                 'type'  =>'text',
                                 'desc'  => '',
-                                'default' =>  esc_html__('Choose Plan', 'onepress-plus'),
+                                'default' =>  esc_html__('Choose Plan', 'sovenco-plus'),
                             ),
                             'link' => array(
-                                'title' => esc_html__('Button Link', 'onepress-plus'),
+                                'title' => esc_html__('Button Link', 'sovenco-plus'),
                                 'type'  =>'text',
                                 'desc'  => '',
                                 'default' => '#',
                             ),
                             'button'  => array(
-                                'title' => esc_html__('Button style', 'onepress-plus'),
+                                'title' => esc_html__('Button style', 'sovenco-plus'),
                                 'type'  =>'select',
                                 'options' => array(
-                                    'btn-theme-primary' => esc_html__('Theme default', 'onepress-plus'),
-                                    'btn-default' => esc_html__('Button', 'onepress-plus'),
-                                    'btn-primary' => esc_html__('Primary', 'onepress-plus'),
-                                    'btn-success' => esc_html__('Success', 'onepress-plus'),
-                                    'btn-info' => esc_html__('Info', 'onepress-plus'),
-                                    'btn-warning' => esc_html__('Warning', 'onepress-plus'),
-                                    'btn-danger' => esc_html__('Danger', 'onepress-plus'),
+                                    'btn-theme-primary' => esc_html__('Theme default', 'sovenco-plus'),
+                                    'btn-default' => esc_html__('Button', 'sovenco-plus'),
+                                    'btn-primary' => esc_html__('Primary', 'sovenco-plus'),
+                                    'btn-success' => esc_html__('Success', 'sovenco-plus'),
+                                    'btn-info' => esc_html__('Info', 'sovenco-plus'),
+                                    'btn-warning' => esc_html__('Warning', 'sovenco-plus'),
+                                    'btn-danger' => esc_html__('Danger', 'sovenco-plus'),
                                 )
                             ),
                         ),
@@ -1962,108 +1962,108 @@ class OnePress_PLus {
         /*  Section: cta
         /*------------------------------------------------------------------------*/
 
-        $wp_customize->add_panel( 'onepress_cta_panel' ,
+        $wp_customize->add_panel( 'sovenco_cta_panel' ,
             array(
                 'priority'        => 240,
-                'title'           => __( 'Section: Call to Action', 'onepress-plus' ),
+                'title'           => __( 'Section: Call to Action', 'sovenco-plus' ),
                 'description'     => '',
-                'active_callback' => 'onepress_showon_frontpage'
+                'active_callback' => 'sovenco_showon_frontpage'
             )
         );
 
-        $wp_customize->add_section( 'onepress_cta_settings' ,
+        $wp_customize->add_section( 'sovenco_cta_settings' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Settings', 'onepress-plus' ),
-                'panel'       => 'onepress_cta_panel',
+                'title'       => __( 'Section Settings', 'sovenco-plus' ),
+                'panel'       => 'sovenco_cta_panel',
             )
         );
 
 
         // Section ID
-        $wp_customize->add_setting( 'onepress_cta_id',
+        $wp_customize->add_setting( 'sovenco_cta_id',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'section-cta',
             )
         );
-        $wp_customize->add_control( 'onepress_cta_id',
+        $wp_customize->add_control( 'sovenco_cta_id',
             array(
-                'label' 		=> __('Section ID', 'onepress-plus'),
-                'section' 		=> 'onepress_cta_settings',
+                'label' 		=> __('Section ID', 'sovenco-plus'),
+                'section' 		=> 'sovenco_cta_settings',
             )
         );
 
        // Title
-       $wp_customize->add_setting( 'onepress_cta_title',
+       $wp_customize->add_setting( 'sovenco_cta_title',
            array(
-               'sanitize_callback' => 'onepress_sanitize_text',
-               'default'           => __( 'Use these ribbons to display calls to action mid-page.' , 'onepress-plus' ),
+               'sanitize_callback' => 'sovenco_sanitize_text',
+               'default'           => __( 'Use these ribbons to display calls to action mid-page.' , 'sovenco-plus' ),
            )
        );
-       $wp_customize->add_control( 'onepress_cta_title',
+       $wp_customize->add_control( 'sovenco_cta_title',
            array(
-               'label' 		=> __('Title', 'onepress-plus'),
-               'section' 		=> 'onepress_cta_settings',
+               'label' 		=> __('Title', 'sovenco-plus'),
+               'section' 		=> 'sovenco_cta_settings',
            )
        );
 
        // Button label
-       $wp_customize->add_setting( 'onepress_cta_btn_label',
+       $wp_customize->add_setting( 'sovenco_cta_btn_label',
            array(
-               'sanitize_callback' => 'onepress_sanitize_text',
-               'default'           => __( 'Button Text' , 'onepress-plus' ),
+               'sanitize_callback' => 'sovenco_sanitize_text',
+               'default'           => __( 'Button Text' , 'sovenco-plus' ),
            )
        );
-       $wp_customize->add_control( 'onepress_cta_btn_label',
+       $wp_customize->add_control( 'sovenco_cta_btn_label',
            array(
-               'label' 		=> __('Button Text', 'onepress-plus'),
-               'section' 		=> 'onepress_cta_settings',
+               'label' 		=> __('Button Text', 'sovenco-plus'),
+               'section' 		=> 'sovenco_cta_settings',
            )
        );
 
        // Button link
-       $wp_customize->add_setting( 'onepress_cta_btn_link',
+       $wp_customize->add_setting( 'sovenco_cta_btn_link',
            array(
-               'sanitize_callback' => 'onepress_sanitize_text',
+               'sanitize_callback' => 'sovenco_sanitize_text',
                'default'           => '',
            )
        );
-       $wp_customize->add_control( 'onepress_cta_btn_link',
+       $wp_customize->add_control( 'sovenco_cta_btn_link',
            array(
-               'label' 		=> __('Button Link', 'onepress-plus'),
-               'section' 		=> 'onepress_cta_settings',
+               'label' 		=> __('Button Link', 'sovenco-plus'),
+               'section' 		=> 'sovenco_cta_settings',
            )
        );
 
         // Button link style
-        $wp_customize->add_setting( 'onepress_cta_btn_link_style',
+        $wp_customize->add_setting( 'sovenco_cta_btn_link_style',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => 'theme-primary',
             )
         );
-        $wp_customize->add_control( 'onepress_cta_btn_link_style',
+        $wp_customize->add_control( 'sovenco_cta_btn_link_style',
             array(
-                'label' 		=> __('Button Link Style', 'onepress-plus'),
-                'section' 		=> 'onepress_cta_settings',
+                'label' 		=> __('Button Link Style', 'sovenco-plus'),
+                'section' 		=> 'sovenco_cta_settings',
                 'type'          => 'select',
                 'choices'       => array(
 
-                    'theme-primary' => esc_html__( 'Theme default', 'onepress-plus' ),
-                    'btn-primary' => esc_html__( 'Primary', 'onepress-plus' ),
-                    'btn-secondary' => esc_html__( 'Secondary', 'onepress-plus' ),
-                    'btn-success' => esc_html__( 'Success', 'onepress-plus' ),
-                    'btn-info' => esc_html__( 'Info', 'onepress-plus' ),
-                    'btn-warning' => esc_html__( 'Warning', 'onepress-plus' ),
-                    'btn-danger' => esc_html__( 'Danger', 'onepress-plus' ),
+                    'theme-primary' => esc_html__( 'Theme default', 'sovenco-plus' ),
+                    'btn-primary' => esc_html__( 'Primary', 'sovenco-plus' ),
+                    'btn-secondary' => esc_html__( 'Secondary', 'sovenco-plus' ),
+                    'btn-success' => esc_html__( 'Success', 'sovenco-plus' ),
+                    'btn-info' => esc_html__( 'Info', 'sovenco-plus' ),
+                    'btn-warning' => esc_html__( 'Warning', 'sovenco-plus' ),
+                    'btn-danger' => esc_html__( 'Danger', 'sovenco-plus' ),
 
-                    'btn-outline-primary' => esc_html__( 'Outline Primary', 'onepress-plus' ),
-                    'btn-outline-secondary' => esc_html__( 'Outline Secondary', 'onepress-plus' ),
-                    'btn-outline-success' => esc_html__( 'Outline Success', 'onepress-plus' ),
-                    'btn-outline-info' => esc_html__( 'Outline Info', 'onepress-plus' ),
-                    'btn-outline-warning' => esc_html__( 'Outline Warning', 'onepress-plus' ),
-                    'btn-outline-danger' => esc_html__( 'Outline Danger', 'onepress-plus' ),
+                    'btn-outline-primary' => esc_html__( 'Outline Primary', 'sovenco-plus' ),
+                    'btn-outline-secondary' => esc_html__( 'Outline Secondary', 'sovenco-plus' ),
+                    'btn-outline-success' => esc_html__( 'Outline Success', 'sovenco-plus' ),
+                    'btn-outline-info' => esc_html__( 'Outline Info', 'sovenco-plus' ),
+                    'btn-outline-warning' => esc_html__( 'Outline Warning', 'sovenco-plus' ),
+                    'btn-outline-danger' => esc_html__( 'Outline Danger', 'sovenco-plus' ),
 
                 )
 
@@ -2077,200 +2077,200 @@ class OnePress_PLus {
         /*  Section: Clients
         /*------------------------------------------------------------------------*/
 
-        $wp_customize->add_panel( 'onepress_clients_panel' ,
+        $wp_customize->add_panel( 'sovenco_clients_panel' ,
             array(
                 'priority'        => 140,
-                'title'           => __( 'Section: Clients', 'onepress-plus' ),
+                'title'           => __( 'Section: Clients', 'sovenco-plus' ),
                 'description'     => '',
-                'active_callback' => 'onepress_showon_frontpage'
+                'active_callback' => 'sovenco_showon_frontpage'
             )
         );
 
-        $wp_customize->add_section( 'onepress_clients_settings' ,
+        $wp_customize->add_section( 'sovenco_clients_settings' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Settings', 'onepress-plus' ),
-                'panel'       => 'onepress_clients_panel',
+                'title'       => __( 'Section Settings', 'sovenco-plus' ),
+                'panel'       => 'sovenco_clients_panel',
             )
         );
 
 
         // Section ID
-        $wp_customize->add_setting( 'onepress_clients_id',
+        $wp_customize->add_setting( 'sovenco_clients_id',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 'clients',
             )
         );
-        $wp_customize->add_control( 'onepress_clients_id',
+        $wp_customize->add_control( 'sovenco_clients_id',
             array(
-                'label' 		=> __('Section ID', 'onepress-plus'),
-                'section' 		=> 'onepress_clients_settings',
+                'label' 		=> __('Section ID', 'sovenco-plus'),
+                'section' 		=> 'sovenco_clients_settings',
             )
         );
 
         // Title
-        $wp_customize->add_setting( 'onepress_clients_title',
+        $wp_customize->add_setting( 'sovenco_clients_title',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_clients_title',
+        $wp_customize->add_control( 'sovenco_clients_title',
             array(
-                'label' 		=> __('Title', 'onepress-plus'),
-                'section' 		=> 'onepress_clients_settings',
+                'label' 		=> __('Title', 'sovenco-plus'),
+                'section' 		=> 'sovenco_clients_settings',
             )
         );
 
 
         // clients subtitle
-        $wp_customize->add_setting( 'onepress_clients_subtitle',
+        $wp_customize->add_setting( 'sovenco_clients_subtitle',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
-                'default'           => __( 'Have been featured on', 'onepress-plus' ),
+                'default'           => __( 'Have been featured on', 'sovenco-plus' ),
             )
         );
-        $wp_customize->add_control( 'onepress_clients_subtitle',
+        $wp_customize->add_control( 'sovenco_clients_subtitle',
             array(
-                'label' 		=> __('Some of our works', 'onepress-plus'),
-                'section' 		=> 'onepress_clients_settings',
+                'label' 		=> __('Some of our works', 'sovenco-plus'),
+                'section' 		=> 'sovenco_clients_settings',
                 'description'   => '',
             )
         );
 
         // Services layout
-        $wp_customize->add_setting( 'onepress_clients_layout',
+        $wp_customize->add_setting( 'sovenco_clients_layout',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => 5,
             )
         );
 
-        $wp_customize->add_control( 'onepress_clients_layout',
+        $wp_customize->add_control( 'sovenco_clients_layout',
             array(
-                'label' 		=> esc_html__('Clients Layout Setting', 'onepress-plus'),
-                'section' 		=> 'onepress_clients_settings',
+                'label' 		=> esc_html__('Clients Layout Setting', 'sovenco-plus'),
+                'section' 		=> 'sovenco_clients_settings',
                 'description'   => '',
                 'type'          => 'select',
                 'choices'       => array(
-                    '2' => esc_html__( '2 Columns', 'onepress-plus' ),
-                    '3' => esc_html__( '3 Columns', 'onepress-plus' ),
-                    '4' => esc_html__( '4 Columns', 'onepress-plus' ),
-                    '5' => esc_html__( '5 Columns', 'onepress-plus' ),
-                    '6' => esc_html__( '6 Columns', 'onepress-plus' ),
+                    '2' => esc_html__( '2 Columns', 'sovenco-plus' ),
+                    '3' => esc_html__( '3 Columns', 'sovenco-plus' ),
+                    '4' => esc_html__( '4 Columns', 'sovenco-plus' ),
+                    '5' => esc_html__( '5 Columns', 'sovenco-plus' ),
+                    '6' => esc_html__( '6 Columns', 'sovenco-plus' ),
                 ),
             )
         );
 
         // Description
-        $wp_customize->add_setting( 'onepress_clients_desc',
+        $wp_customize->add_setting( 'sovenco_clients_desc',
             array(
-                'sanitize_callback' => 'onepress_sanitize_text',
+                'sanitize_callback' => 'sovenco_sanitize_text',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( new OnePress_Editor_Custom_Control(
+        $wp_customize->add_control( new sovenco_Editor_Custom_Control(
             $wp_customize,
-            'onepress_clients_desc',
+            'sovenco_clients_desc',
             array(
-                'label' 		=> esc_html__('Section Description', 'onepress-plus'),
-                'section' 		=> 'onepress_clients_settings',
+                'label' 		=> esc_html__('Section Description', 'sovenco-plus'),
+                'section' 		=> 'sovenco_clients_settings',
                 'description'   => '',
             )
         ));
 
 
         // Section content
-        $wp_customize->add_section( 'onepress_clients_content' ,
+        $wp_customize->add_section( 'sovenco_clients_content' ,
             array(
                 'priority'    => 3,
-                'title'       => __( 'Section Content', 'onepress-plus' ),
-                'panel'       => 'onepress_clients_panel',
+                'title'       => __( 'Section Content', 'sovenco-plus' ),
+                'panel'       => 'sovenco_clients_panel',
             )
         );
         $wp_customize->add_setting(
-            'onepress_clients',
+            'sovenco_clients',
             array(
                 'default' => json_encode(
                     array(
                         array(
-                            'title' => esc_html__( 'Hostingco', 'onepress-plus' ),
+                            'title' => esc_html__( 'Hostingco', 'sovenco-plus' ),
                             'image'  => array(
                                 'id'=> '',
-                                'url'=> ONEPRESS_PLUS_URL.'assets/images/client_logo_1.png',
+                                'url'=> sovenco_PLUS_URL.'assets/images/client_logo_1.png',
                             ),
                             'link' => ''
                         ),
                         array(
-                            'title' => esc_html__( 'Religion', 'onepress-plus' ),
+                            'title' => esc_html__( 'Religion', 'sovenco-plus' ),
                             'image'  => array(
                                 'id'=> '',
-                                'url'=> ONEPRESS_PLUS_URL.'assets/images/client_logo_2.png',
+                                'url'=> sovenco_PLUS_URL.'assets/images/client_logo_2.png',
                             ),
                             'link' => ''
                         ),
                         array(
-                            'title' => esc_html__( 'Viento', 'onepress-plus' ),
+                            'title' => esc_html__( 'Viento', 'sovenco-plus' ),
                             'image'  => array(
                                 'id'=> '',
-                                'url'=> ONEPRESS_PLUS_URL.'assets/images/client_logo_3.png',
+                                'url'=> sovenco_PLUS_URL.'assets/images/client_logo_3.png',
                             ),
                             'link' => ''
                         ),
                         array(
-                            'title' => esc_html__( 'Naturefirst', 'onepress-plus' ),
+                            'title' => esc_html__( 'Naturefirst', 'sovenco-plus' ),
                             'image'  => array(
                                 'id'=> '',
-                                'url'=> ONEPRESS_PLUS_URL.'assets/images/client_logo_4.png',
+                                'url'=> sovenco_PLUS_URL.'assets/images/client_logo_4.png',
                             ),
                             'link' => ''
                         ),
                         array(
-                            'title' => esc_html__( 'Imagine', 'onepress-plus' ),
+                            'title' => esc_html__( 'Imagine', 'sovenco-plus' ),
                             'image'  => array(
                                 'id'=> '',
-                                'url'=> ONEPRESS_PLUS_URL.'assets/images/client_logo_5.png',
+                                'url'=> sovenco_PLUS_URL.'assets/images/client_logo_5.png',
                             ),
                             'link' => ''
                         ),
 
                     )
                 ),
-                'sanitize_callback' => 'onepress_sanitize_repeatable_data_field',
+                'sanitize_callback' => 'sovenco_sanitize_repeatable_data_field',
                 'transport' => 'refresh', // refresh or postMessage
             ) );
 
 
         $wp_customize->add_control(
-            new Onepress_Customize_Repeatable_Control(
+            new sovenco_Customize_Repeatable_Control(
                 $wp_customize,
-                'onepress_clients',
+                'sovenco_clients',
                 array(
-                    'label'     	=> esc_html__('Clients', 'onepress-plus'),
+                    'label'     	=> esc_html__('Clients', 'sovenco-plus'),
                     'description'   => '',
-                    'section'       => 'onepress_clients_content',
+                    'section'       => 'sovenco_clients_content',
                     'live_title_id' => 'title', // apply for unput text and textarea only
-                    'title_format'  => esc_html__('[live_title]', 'onepress-plus'), // [live_title]
+                    'title_format'  => esc_html__('[live_title]', 'sovenco-plus'), // [live_title]
                     'max_item'      => 4, // Maximum item can add
 
                     'fields'    => array(
                         'title' => array(
-                            'title' => esc_html__('Client name', 'onepress-plus'),
+                            'title' => esc_html__('Client name', 'sovenco-plus'),
                             'type'  =>'text',
                             'desc'  => '',
-                            'default' => esc_html__( 'My Client', 'onepress-plus' ),
+                            'default' => esc_html__( 'My Client', 'sovenco-plus' ),
                         ),
                         'image' => array(
-                            'title' => esc_html__('Image', 'onepress-plus'),
+                            'title' => esc_html__('Image', 'sovenco-plus'),
                             'type'  =>'media',
                             'default' => array(
                                 'id'=> '',
-                                'url'=> ONEPRESS_PLUS_URL.'assets/images/client_logo_1.png',
+                                'url'=> sovenco_PLUS_URL.'assets/images/client_logo_1.png',
                             ),
                         ),
                         'link' => array(
-                            'title' => esc_html__('link', 'onepress-plus'),
+                            'title' => esc_html__('link', 'sovenco-plus'),
                             'type'  =>'text',
                             'default' => '',
                         ),
@@ -2284,83 +2284,83 @@ class OnePress_PLus {
         // Gallery
 
         // Source facebook settings
-        $wp_customize->add_setting( 'onepress_gallery_source_facebook',
+        $wp_customize->add_setting( 'sovenco_gallery_source_facebook',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_gallery_source_facebook',
+        $wp_customize->add_control( 'sovenco_gallery_source_facebook',
             array(
-                'label'     	=> esc_html__('Facebook Fan Page Album', 'onepress'),
+                'label'     	=> esc_html__('Facebook Fan Page Album', 'sovenco'),
                 'priority'      => 15,
-                'section' 		=> 'onepress_gallery_content',
-                'description'   => esc_html__('Enter Facebook fan page album ID or album URL here. Your album should publish to load data.', 'onepress'),
+                'section' 		=> 'sovenco_gallery_content',
+                'description'   => esc_html__('Enter Facebook fan page album ID or album URL here. Your album should publish to load data.', 'sovenco'),
             )
         );
 
         // Source flickr API settings
-        $wp_customize->add_setting( 'onepress_gallery_api_facebook',
+        $wp_customize->add_setting( 'sovenco_gallery_api_facebook',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_gallery_api_facebook',
+        $wp_customize->add_control( 'sovenco_gallery_api_facebook',
             array(
-                'label'     	=> esc_html__('Facebook API', 'onepress'),
-                'section' 		=> 'onepress_gallery_content',
+                'label'     	=> esc_html__('Facebook API', 'sovenco'),
+                'section' 		=> 'sovenco_gallery_content',
                 'priority'      => 20,
-                'description'   => sprintf( esc_html__('Paste your Facebook Token here, example: {App_ID}|{App_Secret}. Click %1$s to create an app.', 'onepress'), '<a target="_blank" href="https://developers.facebook.com/apps/">'.esc_html( 'here', 'onepress' ).'</a>' ),
+                'description'   => sprintf( esc_html__('Paste your Facebook Token here, example: {App_ID}|{App_Secret}. Click %1$s to create an app.', 'sovenco'), '<a target="_blank" href="https://developers.facebook.com/apps/">'.esc_html( 'here', 'sovenco' ).'</a>' ),
             )
         );
 
         // Source flickr settings
-        $wp_customize->add_setting( 'onepress_gallery_source_flickr',
+        $wp_customize->add_setting( 'sovenco_gallery_source_flickr',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_gallery_source_flickr',
+        $wp_customize->add_control( 'sovenco_gallery_source_flickr',
             array(
-                'label'     	=> esc_html__('Flickr Username or ID', 'onepress'),
-                'section' 		=> 'onepress_gallery_content',
+                'label'     	=> esc_html__('Flickr Username or ID', 'sovenco'),
+                'section' 		=> 'sovenco_gallery_content',
                 'priority'      => 25,
-                'description'   => esc_html__('Flickr Username or ID here, Required Flickr API.', 'onepress'),
+                'description'   => esc_html__('Flickr Username or ID here, Required Flickr API.', 'sovenco'),
             )
         );
 
         // Source flickr API settings
-        $wp_customize->add_setting( 'onepress_gallery_api_flickr',
+        $wp_customize->add_setting( 'sovenco_gallery_api_flickr',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_gallery_api_flickr',
+        $wp_customize->add_control( 'sovenco_gallery_api_flickr',
             array(
-                'label'     	=> esc_html__('Flickr API key', 'onepress'),
-                'section' 		=> 'onepress_gallery_content',
+                'label'     	=> esc_html__('Flickr API key', 'sovenco'),
+                'section' 		=> 'sovenco_gallery_content',
                 'priority'      => 30,
-                'description'   => esc_html__('Paste your Flickr API key here.', 'onepress'),
+                'description'   => esc_html__('Paste your Flickr API key here.', 'sovenco'),
             )
         );
 
 
         // Source instagram settings
-        $wp_customize->add_setting( 'onepress_gallery_source_instagram',
+        $wp_customize->add_setting( 'sovenco_gallery_source_instagram',
             array(
                 'sanitize_callback' => 'sanitize_text_field',
                 'default'           => '',
             )
         );
-        $wp_customize->add_control( 'onepress_gallery_source_instagram',
+        $wp_customize->add_control( 'sovenco_gallery_source_instagram',
             array(
-                'label'     	=> esc_html__('Instagram Username', 'onepress'),
-                'section' 		=> 'onepress_gallery_content',
+                'label'     	=> esc_html__('Instagram Username', 'sovenco'),
+                'section' 		=> 'sovenco_gallery_content',
                 'priority'      => 35,
-                'description'   => esc_html__('Enter your Instagram username here.', 'onepress'),
+                'description'   => esc_html__('Enter your Instagram username here.', 'sovenco'),
             )
         );
 
@@ -2389,7 +2389,7 @@ class OnePress_PLus {
         if ( ! empty( $this->section_settings ) ) {
             return $this->section_settings;
         }
-        $sections = get_theme_mod( 'onepress_section_order_styling', '');
+        $sections = get_theme_mod( 'sovenco_section_order_styling', '');
         if ( is_string( $sections ) ) {
             $sections = json_decode( $sections, true );
         }
@@ -2538,8 +2538,8 @@ class OnePress_PLus {
             if ( $section['section_id'] == 'map' && $section['show_section'] ) {
                 wp_enqueue_script( 'jquery' );
                 $key = '';
-                if ( get_theme_mod( 'onepress_map_enable_api' ) ) {
-                    $key = get_theme_mod( 'onepress_map_api_key' );
+                if ( get_theme_mod( 'sovenco_map_enable_api' ) ) {
+                    $key = get_theme_mod( 'sovenco_map_api_key' );
                 }
                 if ( ! $key ) {
                     $key = 'AIzaSyASkFdBVeZHxvpMVIOSfk2hGiIzjOzQeFY'; // default key
@@ -2657,18 +2657,18 @@ class OnePress_PLus {
      */
     function frontend_scripts(){
 
-        wp_enqueue_style( 'onepress-style' );
-        wp_register_style( 'onepress-plus-style', ONEPRESS_PLUS_URL.'onepress-plus.css', array( 'onepress-style' ), ONEPRESS_PLUS_VERSION );
-        wp_enqueue_style( 'onepress-plus-style' );
+        wp_enqueue_style( 'sovenco-style' );
+        wp_register_style( 'sovenco-plus-style', sovenco_PLUS_URL.'sovenco-plus.css', array( 'sovenco-style' ), sovenco_PLUS_VERSION );
+        wp_enqueue_style( 'sovenco-plus-style' );
 
         /**
          * Plugin style
          */
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'onepress-plus', ONEPRESS_PLUS_URL.'assets/js/onepress-plus.js', array( 'jquery', 'onepress-theme' ), ONEPRESS_PLUS_VERSION, true );
-        wp_localize_script( 'jquery' , 'OnePress_Plus', array(
+        wp_enqueue_script( 'sovenco-plus', sovenco_PLUS_URL.'assets/js/sovenco-plus.js', array( 'jquery', 'sovenco-theme' ), sovenco_PLUS_VERSION, true );
+        wp_localize_script( 'jquery' , 'sovenco_Plus', array(
             'ajax_url' => admin_url( 'admin-ajax.php' ),
-            'browser_warning'=> esc_html__( ' Your browser does not support the video tag. I suggest you upgrade your browser.', 'onepress-plus' )
+            'browser_warning'=> esc_html__( ' Your browser does not support the video tag. I suggest you upgrade your browser.', 'sovenco-plus' )
         ) );
     }
 
@@ -2677,7 +2677,7 @@ class OnePress_PLus {
      */
     function custom_css(){
         if ( $this->custom_css ) {
-            wp_add_inline_style( 'onepress-style', $this->custom_css  );
+            wp_add_inline_style( 'sovenco-style', $this->custom_css  );
         }
     }
 
@@ -2722,8 +2722,8 @@ class OnePress_PLus {
                 'hide_title' => '',
             ) );
             ?>
-            <section id="<?php if ( $section['section_id'] != '' ) echo esc_attr( $section['section_id'] ); ?>" <?php do_action( 'onepress_section_atts', $section['section_id'] ); ?> class="<?php echo esc_attr( apply_filters( 'onepress_section_class', 'section-'.$section['section_id'].' onepage-section section-meta section-padding', $section['section_id'] ) ); ?>">
-                <?php do_action( 'onepress_section_before_inner', $section['section_id'] ); ?>
+            <section id="<?php if ( $section['section_id'] != '' ) echo esc_attr( $section['section_id'] ); ?>" <?php do_action( 'sovenco_section_atts', $section['section_id'] ); ?> class="<?php echo esc_attr( apply_filters( 'sovenco_section_class', 'section-'.$section['section_id'].' onepage-section section-meta section-padding', $section['section_id'] ) ); ?>">
+                <?php do_action( 'sovenco_section_before_inner', $section['section_id'] ); ?>
                 <div class="container">
                     <?php if ( $section['subtitle'] || ( ! $section['hide_title'] && $section['title'] ) ) { ?>
                         <?php if ( $section['title'] || $section['subtitle']  || $section['desc']  ) { ?>
@@ -2740,7 +2740,7 @@ class OnePress_PLus {
                     <?php } ?>
                     <div class="section-content-area custom-section-content"><?php echo apply_filters( 'the_content', wp_kses_post( $section['content'] ) ); ?></div>
                 </div>
-                <?php do_action( 'onepress_section_after_inner', $section['section_id'] ); ?>
+                <?php do_action( 'sovenco_section_after_inner', $section['section_id'] ); ?>
             </section>
             <?php
 
@@ -2764,20 +2764,20 @@ class OnePress_PLus {
         /**
          * Hook before section
          */
-        do_action('onepress_before_section_hero' );
-        do_action( 'onepress_before_section_part', 'hero' );
+        do_action('sovenco_before_section_hero' );
+        do_action( 'sovenco_before_section_part', 'hero' );
 
         $this->locate_template('section-parts/section-hero.php', true, false );
 
         /**
          * Hook after section
          */
-        do_action('onepress_after_section_part', 'hero' );
-        do_action('onepress_after_section_hero' );
+        do_action('sovenco_after_section_part', 'hero' );
+        do_action('sovenco_after_section_hero' );
 
 
         if ( is_array( $sections ) ) {
-            add_filter( 'onepress_section_class', array( $this, 'filter_section_class' ), 15, 2 );
+            add_filter( 'sovenco_section_class', array( $this, 'filter_section_class' ), 15, 2 );
             foreach ( $sections as $index => $section ) {
                 //$GLOBALS['current_section'] = $section;
                 $section = wp_parse_args( $section,
@@ -2797,12 +2797,12 @@ class OnePress_PLus {
                 );
 
                 // make sure we not disable from theme template
-                add_filter( 'theme_mod_onepress_'.$section['section_id'].'_disable', '__return_false', 99 );
+                add_filter( 'theme_mod_sovenco_'.$section['section_id'].'_disable', '__return_false', 99 );
                 // If disabled section the code this line below will handle this
                 if ( $section['show_section'] ) {
                     if ( $section['section_id'] != '' ) {
-                        do_action('onepress_before_section_'.$section['section_id'] );
-                        do_action('onepress_before_section_part', $section['section_id'] );
+                        do_action('sovenco_before_section_'.$section['section_id'] );
+                        do_action('sovenco_before_section_part', $section['section_id'] );
 
                         switch ( $section['bg_type'] ) {
 
@@ -2861,12 +2861,12 @@ class OnePress_PLus {
                         }
 
 
-                        do_action('onepress_after_section_part', $section['section_id']);
-                        do_action('onepress_after_section_'.$section['section_id'] );
+                        do_action('sovenco_after_section_part', $section['section_id']);
+                        do_action('sovenco_after_section_'.$section['section_id'] );
                     }
                 }
             }
-            remove_filter( 'onepress_section_class', array( $this, 'filter_section_class' ), 15, 2 );
+            remove_filter( 'sovenco_section_class', array( $this, 'filter_section_class' ), 15, 2 );
         }
     }
 
@@ -2896,8 +2896,8 @@ class OnePress_PLus {
                 $located = STYLESHEETPATH . '/' . $template_name;
                 break;
 
-            } elseif ( file_exists( ONEPRESS_PLUS_PATH  . $template_name ) ) { // Check part in the plugin
-                $located = ONEPRESS_PLUS_PATH . $template_name;
+            } elseif ( file_exists( sovenco_PLUS_PATH  . $template_name ) ) { // Check part in the plugin
+                $located = sovenco_PLUS_PATH . $template_name;
                 break;
             } elseif ( file_exists(TEMPLATEPATH . '/' . $template_name) ) { // current_theme
                 $located = TEMPLATEPATH . '/' . $template_name;
@@ -2915,7 +2915,7 @@ class OnePress_PLus {
 /**
  * call plugin
  */
-function onepress_plus_setup(){
-    new OnePress_PLus();
+function sovenco_plus_setup(){
+    new sovenco_PLus();
 }
-add_action( 'plugins_loaded', 'onepress_plus_setup' );
+add_action( 'plugins_loaded', 'sovenco_plus_setup' );
