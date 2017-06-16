@@ -4,7 +4,7 @@
 @import "variables";
 
 
-/* OnePress Plus General CSS
+/* sovenco Plus General CSS
 ------------------------------*/
 
 /* Video Background */
@@ -46,7 +46,7 @@
 		background-size: cover;
 }
 
-/* OnePress Plus Section: Map
+/* sovenco Plus Section: Map
 ------------------------------*/
 section.section-map:before {
     display: none !important;
@@ -61,7 +61,7 @@ section.section-map:before {
         margin: 10px 0px 0px;
     }
 }
-.onepress-map {
+.sovenco-map {
 	display: block;
 }
 .no-map-api .google-map-notice{
@@ -78,7 +78,7 @@ section.section-map:before {
 	margin-bottom: 15px;
 }
 
-/* OnePress Plus Section: Projects
+/* sovenco Plus Section: Projects
 --------------------------------*/
 
 .spinner {
@@ -393,7 +393,7 @@ section.section-map:before {
 	}
 }
 
-/* OnePress Plus Section: Pricing
+/* sovenco Plus Section: Pricing
 --------------------------------*/
 .section-pricing {
 
@@ -461,7 +461,7 @@ section.section-map:before {
 
 
 
-/* OnePress Plus Section: Call To Action
+/* sovenco Plus Section: Call To Action
 --------------------------------*/
 .section-cta {
 	@include media-breakpoint-down(md) {
@@ -546,7 +546,7 @@ section.section-map:before {
 	}
 }
 
-/* OnePress Plus Section: Clients
+/* sovenco Plus Section: Clients
 --------------------------------*/
 .clients-wrapper {
 	text-align: center;
