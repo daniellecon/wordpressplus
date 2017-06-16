@@ -1,10 +1,10 @@
 <?php
-class OnePress_Plus_Ajax {
+class sovenco_Plus_Ajax {
 
     public static function init(){
 
-        $action = $_REQUEST['onepress_ajax_action'];
-        if( method_exists( 'OnePress_Plus_Ajax', $action ) ) {
+        $action = $_REQUEST['sovenco_ajax_action'];
+        if( method_exists( 'sovenco_Plus_Ajax', $action ) ) {
             self::$action();
         }
 
@@ -23,7 +23,7 @@ class OnePress_Plus_Ajax {
             ?>
             <div id="project-details-id-<?php echo esc_attr( $post_id ); ?>" data-id="<?php echo esc_attr( $post_id ); ?>" class="project-detail project-expander ">
                 <div class="grid-row project-expander-contents clearfix">
-                    <div class="project-trigger-close close"><?php _e( 'close', 'onepress-plus' ); ?></div>
+                    <div class="project-trigger-close close"><?php _e( 'close', 'sovenco-plus' ); ?></div>
                     <?php if ( count( $contents ) > 1 ) { ?>
                         <div class="row">
                             <div class="col-lg-8 col-sm-12 project-media">
@@ -66,5 +66,5 @@ class OnePress_Plus_Ajax {
     }
 }
 
-add_action( 'wp_ajax_onepress_plus_ajax', array( 'OnePress_Plus_Ajax', 'init' ) );
-add_action( 'wp_ajax_nopriv_onepress_plus_ajax', array( 'OnePress_Plus_Ajax', 'init' ) );
+add_action( 'wp_ajax_sovenco_plus_ajax', array( 'sovenco_Plus_Ajax', 'init' ) );
+add_action( 'wp_ajax_nopriv_sovenco_plus_ajax', array( 'sovenco_Plus_Ajax', 'init' ) );
