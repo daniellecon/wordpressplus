@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: sovenco Plus
-Plugin URI: http://www.famethemes.com/
+Plugin URI: http://www.sovenco.com/
 Description: The sovenco Plus plugin adds powerful premium features to sovenco theme.
-Author: famethemes
-Author URI:  http://www.famethemes.com/
+Author: sovenco
+Author URI:  http://www.sovenco.com/
 Version: 1.2.5
 Text Domain: sovenco-plus
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
