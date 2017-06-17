@@ -44,7 +44,7 @@ add_action( 'sovenco_section_team_member_media', 'sovenco_plus_team_member_socia
 function sovenco_plus_dashboard_theme_links(){
     ?>
     <p>
-        <a href="http://docs.famethemes.com/category/50-sovenco-plus" target="_blank" class="button button-primary"><?php esc_html_e('sovenco Plus Documentation', 'sovenco-plus'); ?></a>
+        <a href="http://docs.sovenco.com" target="_blank" class="button button-primary"><?php esc_html_e('sovenco Plus Documentation', 'sovenco-plus'); ?></a>
     </p>
     <?php
 }
@@ -60,7 +60,7 @@ function sovenco_plus_add_theme_footer_info(){
         if ( $c ) {
             $c.= '<span class="sep"> &ndash; </span>';
         }
-        $c.= sprintf(esc_html__('%1$s theme by %2$s', 'sovenco-plus'), '<a href="' . esc_url('https://www.famethemes.com/themes/sovenco', 'sovenco-plus') . '">sovenco</a>', 'FameThemes');
+        $c.= sprintf(esc_html__('%1$s theme by %2$s', 'sovenco-plus'), '<a href="' . esc_url('https://www.sovenco.com', 'sovenco-plus') . '">sovenco</a>', 'sovencoThemes');
     }
     echo $c;
 }
