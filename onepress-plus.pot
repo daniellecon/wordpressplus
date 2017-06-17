@@ -407,7 +407,7 @@ msgid "Your License key is invalid."
 msgstr ""
 
 #: inc/auto-update/auto-update.php:98
-msgid "Could not connect to FameThemes server."
+msgid "Could not connect to sovencoThemes server."
 msgstr ""
 
 #: inc/auto-update/auto-update.php:121
@@ -417,7 +417,7 @@ msgstr ""
 #: inc/auto-update/auto-update.php:128
 msgid ""
 "Enter your license key to enable automatic theme updates. Find your license "
-"key at your FameThemes Dashboard, under Licenses section."
+"key at your sovencoThemes Dashboard, under Licenses section."
 msgstr ""
 
 #: inc/auto-update/auto-update.php:134 inc/auto-update/auto-update.php:140
