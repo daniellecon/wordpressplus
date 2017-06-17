@@ -1,7 +1,7 @@
 <?php
 
 // this is the URL our updater / license checker pings. This should be the URL of the site with EDD installed
-define( 'EDD_sovenco_PLUS_STORE_URL', 'https://www.famethemes.com' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file
+define( 'EDD_sovenco_PLUS_STORE_URL', 'https://www.sovenco.com' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file
 
 // the name of your product. This should match the download name in EDD exactly
 define( 'EDD_sovenco_PLUS_ITEM_NAME', 'sovenco Plus' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file
@@ -84,7 +84,7 @@ function sovenco_plus_more_tabs_details( $details ){
 
                 if ( $data->error == 'expired' ) {
                     $message = '<p class="description" style="color: red;">'.sprintf( esc_html__( 'Your License key is expired. Expires %s.', 'sovenco-plus' ), date_i18n( get_option('date_format'), strtotime( $data->expires ) ) ).'</p>';
-                    $message .= '<p>'.esc_html__( 'This license must be renewed before it can be upgraded.', 'sovenco-plus' ).' <a target="_blank" href="'.esc_url( 'https://www.famethemes.com/checkout/?edd_license_key='.$license.'' ).'">'.esc_html__( 'Click here to Renewal', 'sovenco-plus' ).'</a> </p>';
+                    $message .= '<p>'.esc_html__( 'This license must be renewed before it can be upgraded.', 'sovenco-plus' ).' <a target="_blank" href="'.esc_url( 'https://www.sovenco.com'' ).'">'.esc_html__( 'Click here to Renewal', 'sovenco-plus' ).'</a> </p>';
                 } else if ( $data->license_limit == 1 || $data->error == 'no_activations_left' )  {
                     $message = '<p class="description" style="color: red;">'.sprintf( esc_html__( 'Your license is limited. Activations: %1$s/%2$s.', 'sovenco-plus' ), $data->site_count, $data->max_sites ).'</p>';
                 } else {
@@ -95,7 +95,7 @@ function sovenco_plus_more_tabs_details( $details ){
         } else {
             if ( ! empty( $error ) ) {
 
-                $message = '<div style="color: red;"><p>' .__( 'Could not connect to FameThemes server.', 'sovenco-plus' ).'</p>';
+                $message = '<div style="color: red;"><p>' .__( 'Could not connect to sovencoThemes server.', 'sovenco-plus' ).'</p>';
                 if ( is_array( $error ) ) {
                     foreach ( $error as $msg ) {
                         $message .= '<p>'.$msg.'</p>';
@@ -125,7 +125,7 @@ function sovenco_plus_more_tabs_details( $details ){
                     <div class="license-status-message">
                         <?php echo $message; ?>
                     </div>
-                    <p><?php _e( 'Enter your license key to enable automatic theme updates. Find your license key at your FameThemes Dashboard, under Licenses section.', 'sovenco-plus' ); ?></p>
+                    <p><?php _e( 'Enter your license key to enable automatic theme updates. Find your license key at your sovencoThemes Dashboard, under Licenses section.', 'sovenco-plus' ); ?></p>
                 </td>
             </tr>
             <?php if( $can_action ) { ?>
@@ -162,7 +162,7 @@ function edd_sl_sovenco_plus_plugin_updater() {
 			'version' 	=> sovenco_PLUS_VERSION, // current version number
 			'license' 	=> $license_key, 		// license key (used get_option above to retrieve from DB)
 			'item_name' => EDD_sovenco_PLUS_ITEM_NAME, 	// name of this plugin
-			'author' 	=> 'FameThemes'  // author of this plugin
+			'author' 	=> 'sovencoThemes'  // author of this plugin
 		)
 	);
 
